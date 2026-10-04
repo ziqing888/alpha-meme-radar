@@ -41,12 +41,13 @@ discovery, early-bird, and confirmation model as the other monitor chains.
 ARC RPC and Arcscan evidence share the single `onchain` provider family and
 cannot manufacture cross-provider resonance.
 
-Code capability is not runtime activation. ARC remains outside the default
-`bsc,robinhood` monitor scope because the latest one-shot validated the chain
-ID but failed closed on ERC-20 metadata `execution reverted` responses and an
-HTTP 429 from `eth_getCode`; no inbox or checkpoint was produced. Enabling ARC
-requires successful live metadata validation and explicit approval before any
-monitor-side restart. Removing `arc` through
+ARC is enabled by default only in the fast monitor, whose effective chain
+scope is `bsc,robinhood,arc`. The base provider scope remains
+`DEFAULT_MEME_CHAINS=bsc,robinhood`; provider adapters therefore gain ARC only
+when their support is explicit. The ARC adapter validates every candidate RPC
+with `eth_chainId == 0x13b2`, falls through validated endpoints for bounded log
+and metadata reads, and fails closed without checkpoint advancement when
+evidence remains unresolved. Removing `arc` through
 `ALPHA_MEME_CHAINS=bsc,robinhood` is the monitor-only rollback; it does not
 change BSC or Robinhood execution state.
 

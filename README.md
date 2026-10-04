@@ -31,11 +31,16 @@ every chain.
 
 ARC Mainnet is implemented as a read-only monitoring chain with chain ID
 `5042` (`0x13b2`). The public-chain adapter accepts data only after an RPC
-endpoint returns `eth_chainId == 0x13b2` and uses these read-only endpoints:
+endpoint returns `eth_chainId == 0x13b2`. Its bounded, read-only RPC order is:
 
-- primary RPC: `https://rpc.mainnet.arc.io`;
-- fallback RPC: `https://rpc.arc-scan.org`;
-- Arcscan API: `https://api.arc-scan.org/v1`.
+1. `https://rpc.blockdaemon.mainnet.arc.io`;
+2. `https://rpc.drpc.mainnet.arc.io`;
+3. `https://rpc.quicknode.mainnet.arc.io`;
+4. `https://rpc.mainnet.arc.io`.
+
+The adapter falls through validated endpoints for log and metadata reads. An
+explorer indexer is disabled by default and is used only when
+`ARC_SCAN_API_URL` is explicitly configured.
 
 Run one isolated adapter cycle with:
 
@@ -57,13 +62,12 @@ no live ARC rows have been validated. DexScreener is a separate bounded market
 or enrichment family. Paid visibility remains ranking evidence; only verified
 address-level wallet events count as wallet evidence.
 
-ARC is monitor-capable in code but is not runtime-activated. The current
-default remains `DEFAULT_MEME_CHAINS=bsc,robinhood`. The latest read-only live
-one-shot validated `0x13b2`, then failed closed while ERC-20 metadata calls
-returned `execution reverted` and `eth_getCode` was rate-limited with HTTP
-429. It produced no ARC inbox and no checkpoint, so runtime activation remains
-gated pending a successful live metadata cycle and explicit restart approval.
-The rollback override for the monitor process is:
+ARC is enabled by default only in the fast monitor, whose effective scope is
+`bsc,robinhood,arc`. The base provider default remains
+`DEFAULT_MEME_CHAINS=bsc,robinhood`, so adapters without validated ARC support
+are not widened implicitly. ARC polling fails closed: unresolved log or token
+metadata evidence does not publish a successful empty result or advance its
+checkpoint. The monitor-only rollback override is:
 
 ```powershell
 $env:ALPHA_MEME_CHAINS = 'bsc,robinhood'
