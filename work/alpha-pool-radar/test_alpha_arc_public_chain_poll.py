@@ -92,6 +92,35 @@ def test_run_once_falls_back_after_primary_endpoint_failure(monkeypatch, tmp_pat
     assert json.loads((tmp_path / "meme-source-inbox/arc-onchain.json").read_text())["count"] == 1
 
 
+def test_run_once_rechecks_unresolved_candidate_on_fallback_endpoint(monkeypatch, tmp_path):
+    poll = load_module()
+    token = address(1)
+    primary = "https://primary"
+    fallback = "https://fallback"
+    monkeypatch.setattr(poll, "validate_rpc_urls", lambda urls, timeout: (urls, []))
+    monkeypatch.setattr(poll, "rpc_call", lambda url, method, params, timeout: "0x64")
+
+    def collect(url, start, end, timeout):
+        if url == primary:
+            raise poll.UnresolvedCandidateError(
+                f"unresolved_candidate:{token}:eth_getCode:HTTP Error 429: Too Many Requests"
+            )
+        return [verified_row(token)]
+
+    monkeypatch.setattr(poll, "collect_rpc_events", collect)
+    monkeypatch.setattr(poll, "collect_arcscan_candidates", lambda base, limit, timeout: ([], []))
+
+    status = poll.run_once(tmp_path, [primary, fallback], "")
+
+    assert status["ok"] is True
+    assert status["rpc_url"] == fallback
+    assert status["checkpoint_advanced"] is True
+    assert status["rpc_errors"] == [{
+        "url": primary,
+        "error": f"unresolved_candidate:{token}:eth_getCode:HTTP Error 429: Too Many Requests",
+    }]
+
+
 def test_main_uses_official_fallback_when_circle_endpoint_is_unavailable(monkeypatch, tmp_path):
     poll = load_module()
 

@@ -796,6 +796,7 @@ def run_once(
     last_completed = previous_state.get("last_completed_block")
     checkpoint = int(last_completed) if isinstance(last_completed, int) and last_completed >= 0 else None
     from_block = 0
+    unresolved_contracts: set[str] = set()
     budget_token = _ACTIVE_LOG_QUERY_BUDGET.set(query_budget)
     try:
         for candidate_url in valid_urls:
@@ -810,11 +811,30 @@ def run_once(
                 rpc_rows = collect_rpc_events(
                     candidate_url, from_block, processed_to_block, timeout_seconds
                 )
+                if unresolved_contracts:
+                    fallback_contracts = {
+                        str(row.get("contract_address") or "").lower()
+                        for row in rpc_rows
+                        if isinstance(row, dict)
+                    }
+                    missing = sorted(unresolved_contracts - fallback_contracts)
+                    if missing:
+                        rpc_errors.append({
+                            "url": candidate_url,
+                            "error": "fallback_missing_unresolved_candidates:" + ",".join(missing),
+                        })
+                        continue
                 rpc_url = candidate_url
                 break
             except UnresolvedCandidateError as exc:
                 rpc_errors.append({"url": candidate_url, "error": str(exc)})
-                break
+                observed_contracts = {
+                    value.lower()
+                    for value in re.findall(r"0x[0-9a-fA-F]{40}", str(exc))
+                }
+                if not observed_contracts:
+                    break
+                unresolved_contracts.update(observed_contracts)
             except Exception as exc:  # noqa: BLE001 - try the next validated endpoint
                 rpc_errors.append({"url": candidate_url, "error": str(exc)})
     finally:
