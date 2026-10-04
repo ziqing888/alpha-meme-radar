@@ -21,10 +21,10 @@ from typing import Any, Literal
 
 ARC_CHAIN_ID_HEX = "0x13b2"
 DEFAULT_RPC_URLS = (
-    "https://rpc.mainnet.arc.io",
     "https://rpc.blockdaemon.mainnet.arc.io",
     "https://rpc.drpc.mainnet.arc.io",
     "https://rpc.quicknode.mainnet.arc.io",
+    "https://rpc.mainnet.arc.io",
 )
 DEFAULT_ARCSCAN_BASE_URL = os.environ.get("ARC_SCAN_API_URL", "").strip()
 MAX_BLOCK_SPAN = 250

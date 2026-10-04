@@ -191,6 +191,22 @@ def test_main_uses_official_fallback_when_circle_endpoint_is_unavailable(monkeyp
     assert status["rpc_url"] == "https://rpc.blockdaemon.mainnet.arc.io"
 
 
+def test_main_prefers_the_log_scan_capable_official_rpc(monkeypatch, tmp_path):
+    poll = load_module()
+    monkeypatch.setattr(
+        poll,
+        "rpc_call",
+        lambda url, method, params, timeout: "0x13b2" if method == "eth_chainId" else "0x64",
+    )
+    monkeypatch.setattr(poll, "collect_rpc_events", lambda url, start, end, timeout: [])
+    monkeypatch.setattr(poll, "collect_arcscan_candidates", lambda base, limit, timeout: ([], []))
+    monkeypatch.setattr(sys, "argv", ["alpha_arc_public_chain_poll.py", "--out-dir", str(tmp_path)])
+
+    assert poll.main() == 0
+    status = json.loads((tmp_path / "arc-public-chain-poll-status.json").read_text())
+    assert status["rpc_url"] == "https://rpc.blockdaemon.mainnet.arc.io"
+
+
 def test_run_once_writes_status_inbox_and_checkpoint_to_the_given_output_directory(monkeypatch, tmp_path):
     poll = load_module()
     output = tmp_path / "outputs"
