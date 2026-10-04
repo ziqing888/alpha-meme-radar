@@ -22,9 +22,11 @@ from typing import Any, Literal
 ARC_CHAIN_ID_HEX = "0x13b2"
 DEFAULT_RPC_URLS = (
     "https://rpc.mainnet.arc.io",
-    "https://rpc.arc-scan.org",
+    "https://rpc.blockdaemon.mainnet.arc.io",
+    "https://rpc.drpc.mainnet.arc.io",
+    "https://rpc.quicknode.mainnet.arc.io",
 )
-DEFAULT_ARCSCAN_BASE_URL = "https://api.arc-scan.org/v1"
+DEFAULT_ARCSCAN_BASE_URL = os.environ.get("ARC_SCAN_API_URL", "").strip()
 MAX_BLOCK_SPAN = 250
 MAX_RANGES_PER_CYCLE = 4
 MAX_BLOCKS_PER_CYCLE = MAX_BLOCK_SPAN * MAX_RANGES_PER_CYCLE
@@ -543,29 +545,35 @@ def _rows(value: object) -> list[dict[str, object]]:
 def collect_arcscan_candidates(
     base_url: str, limit: int, timeout_seconds: float
 ) -> tuple[list[dict[str, object]], list[dict[str, str]]]:
+    if not str(base_url or "").strip():
+        return [], []
     bounded_limit = max(1, min(int(limit), RECENT_EVENT_LIMIT))
     rows: list[dict[str, object]] = []
     errors: list[dict[str, str]] = []
     successful = 0
-    for kind in ("tokens", "contracts"):
-        url = f"{base_url.rstrip('/')}/explore/{kind}?{urllib.parse.urlencode({'limit': bounded_limit})}"
+    for kind in ("tokens", "smart-contracts"):
+        url = f"{base_url.rstrip('/')}/{kind}?{urllib.parse.urlencode({'limit': bounded_limit})}"
         try:
             payload = _http_json(url, timeout_seconds)
             successful += 1
             for raw in _rows(payload)[:bounded_limit]:
+                nested_address = raw.get("address")
+                if isinstance(nested_address, Mapping):
+                    nested_address = nested_address.get("hash")
                 contract = (
                     raw.get("contract_address")
                     or raw.get("contractAddress")
                     or raw.get("token_address")
                     or raw.get("tokenAddress")
-                    or raw.get("address")
+                    or raw.get("address_hash")
+                    or nested_address
                 )
                 item = dict(raw)
                 item.update(
                     {
                         "contract_address": str(contract or "").lower(),
                         "source": "arc_arcscan",
-                        "event_kind": f"arcscan_{kind[:-1]}",
+                        "event_kind": f"arcscan_{kind.rstrip('s')}",
                         "arcscan_id": str(raw.get("id") or raw.get("identifier") or contract or ""),
                     }
                 )

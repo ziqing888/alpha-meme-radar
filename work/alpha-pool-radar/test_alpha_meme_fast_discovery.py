@@ -39,8 +39,16 @@ def test_arc_adapter_inbox_loads_as_accepted_onchain_discovery_and_projects(monk
         encoding="utf-8",
     )
     monkeypatch.setenv("ALPHA_MEME_SOURCE_INBOX_DIR", str(inbox_dir))
-    monkeypatch.setenv("ALPHA_MEME_CHAINS", "bsc,robinhood,arc")
+    for key in (
+        "ALPHA_MEME_CHAINS",
+        "MEME_SKIP_DEX_ENRICH",
+        "MEME_BATCH_PAIRS",
+        "MEME_PAIR_TOTAL_TIMEOUT_SECONDS",
+    ):
+        monkeypatch.setenv(key, "__unset__")
+        monkeypatch.delenv(key)
     monkeypatch.delenv("ALPHA_MEME_SOURCE_INBOX_DISABLE", raising=False)
+    fast.configure_fast_source_environment()
 
     sources, errors = fast.load_local_inbox_sources(10)
     events = [
@@ -145,6 +153,8 @@ def test_fast_monitor_preserves_identity_across_a_temporary_stale_gap(tmp_path: 
 
 
 def test_fast_source_environment_uses_provider_market_data_without_dex_burst(monkeypatch):
+    monkeypatch.setenv("ALPHA_MEME_CHAINS", "__unset__")
+    monkeypatch.delenv("ALPHA_MEME_CHAINS")
     monkeypatch.setenv("MEME_SKIP_DEX_ENRICH", "0")
     monkeypatch.setenv("MEME_BATCH_PAIRS", "0")
     monkeypatch.setenv("MEME_PAIR_TOTAL_TIMEOUT_SECONDS", "99")

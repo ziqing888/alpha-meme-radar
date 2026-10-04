@@ -92,6 +92,30 @@ def test_run_once_falls_back_after_primary_endpoint_failure(monkeypatch, tmp_pat
     assert json.loads((tmp_path / "meme-source-inbox/arc-onchain.json").read_text())["count"] == 1
 
 
+def test_main_uses_official_fallback_when_circle_endpoint_is_unavailable(monkeypatch, tmp_path):
+    poll = load_module()
+
+    def rpc_call(url, method, params, timeout_seconds):
+        if method == "eth_chainId":
+            if url == "https://rpc.mainnet.arc.io":
+                raise urllib.error.URLError("primary unavailable")
+            if url == "https://rpc.blockdaemon.mainnet.arc.io":
+                return "0x13b2"
+            raise urllib.error.URLError("endpoint unavailable")
+        if method == "eth_blockNumber":
+            return "0x64"
+        raise AssertionError(f"unexpected rpc method: {method}")
+
+    monkeypatch.setattr(poll, "rpc_call", rpc_call)
+    monkeypatch.setattr(poll, "collect_rpc_events", lambda url, start, end, timeout: [])
+    monkeypatch.setattr(poll, "collect_arcscan_candidates", lambda base, limit, timeout: ([], []))
+    monkeypatch.setattr(sys, "argv", ["alpha_arc_public_chain_poll.py", "--out-dir", str(tmp_path)])
+
+    assert poll.main() == 0
+    status = json.loads((tmp_path / "arc-public-chain-poll-status.json").read_text())
+    assert status["rpc_url"] == "https://rpc.blockdaemon.mainnet.arc.io"
+
+
 def test_run_once_writes_status_inbox_and_checkpoint_to_the_given_output_directory(monkeypatch, tmp_path):
     poll = load_module()
     output = tmp_path / "outputs"
@@ -232,17 +256,32 @@ def test_arcscan_tokens_and_contracts_normalize_to_arc(monkeypatch):
 
     def fake_http(url, timeout):
         if "/tokens?" in url:
-            return {"data": [{"address": token, "id": "token-1", "holderCount": 7}]}
-        return {"items": [{"contractAddress": contract, "id": "contract-2"}]}
+            return {"items": [{"address_hash": token, "id": "token-1", "holderCount": 7}]}
+        assert "/smart-contracts?" in url
+        return {"items": [{"address": {"hash": contract}, "id": "contract-2"}]}
 
     monkeypatch.setattr(poll, "_http_json", fake_http)
-    rows, errors = poll.collect_arcscan_candidates("https://scan/v1", 25, 1.0)
+    rows, errors = poll.collect_arcscan_candidates("https://explorer.arc.io/api/v2", 25, 1.0)
     normalized = poll.normalize_discoveries([], rows, "2026-09-16T00:00:00Z")
 
     assert errors == []
     assert {row["chain"] for row in normalized} == {"arc"}
     assert {row["contract_address"] for row in normalized} == {token, contract}
     assert "holders" not in next(row for row in normalized if row["contract_address"] == contract)
+
+
+def test_disabled_arcscan_source_is_neutral(monkeypatch):
+    poll = load_module()
+    monkeypatch.setattr(
+        poll,
+        "_http_json",
+        lambda url, timeout: (_ for _ in ()).throw(AssertionError("indexer should stay disabled")),
+    )
+
+    rows, errors = poll.collect_arcscan_candidates("", 25, 1.0)
+
+    assert rows == []
+    assert errors == []
 
 
 def test_rpc_and_arcscan_sightings_deduplicate_to_one_onchain_identity():

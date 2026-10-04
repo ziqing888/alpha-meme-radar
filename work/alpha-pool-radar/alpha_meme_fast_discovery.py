@@ -89,6 +89,7 @@ REPORT_PATH = OUT_DIR / "alpha-radar-report-latest.json"
 FAST_SNAPSHOT_NAME = "alpha-meme-fast-latest.json"
 MONITOR_QUOTE_CACHE_NAME = "alpha-monitor-quote-cache.json"
 STATUS_PATH = OUT_DIR / "alpha-meme-fast-discovery-status.json"
+DEFAULT_MONITOR_CHAINS = f"{DEFAULT_MEME_CHAINS},arc"
 GMGN_HOLDER_MIN_INTERVAL_SECONDS = 15
 GMGN_HOLDER_REQUESTS_PER_CHAIN_CYCLE = 1
 LIVE_CANDIDATE_LIMIT_PER_CHAIN = 8
@@ -138,6 +139,7 @@ _MONITOR_INTELLIGENCE_STATE: dict[str, float] = {}
 
 def configure_fast_source_environment() -> None:
     """Use provider market snapshots; downstream quote only selected candidates."""
+    os.environ.setdefault("ALPHA_MEME_CHAINS", DEFAULT_MONITOR_CHAINS)
     os.environ["MEME_SKIP_DEX_ENRICH"] = "1"
     os.environ["MEME_BATCH_PAIRS"] = "1"
     os.environ["MEME_PAIR_TOTAL_TIMEOUT_SECONDS"] = "6"
@@ -1409,7 +1411,6 @@ def main() -> int:
     parser.add_argument("--once", action="store_true")
     parser.add_argument("--execution-handoff", action="store_true")
     args = parser.parse_args()
-    os.environ.setdefault("ALPHA_MEME_CHAINS", DEFAULT_MEME_CHAINS)
     configure_fast_source_environment()
     if os.name == "nt":
         import ctypes
