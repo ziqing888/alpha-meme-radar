@@ -121,6 +121,52 @@ def test_run_once_rechecks_unresolved_candidate_on_fallback_endpoint(monkeypatch
     }]
 
 
+def test_run_once_uses_fallback_for_metadata_without_requiring_duplicate_logs(monkeypatch, tmp_path):
+    poll = load_module()
+    token = address(1)
+    primary = "https://primary"
+    fallback = "https://fallback"
+    transfer = {
+        "address": token,
+        "topics": [poll.TRANSFER_TOPIC, poll.ZERO_ADDRESS_TOPIC, topic_address(address(2))],
+        "data": "0x" + uint_word(1000),
+        "transactionHash": "0xmetadata-fallback",
+        "logIndex": "0x1",
+        "blockNumber": "0x64",
+    }
+    monkeypatch.setattr(poll, "validate_rpc_urls", lambda urls, timeout: (urls, []))
+    monkeypatch.setattr(poll, "collect_arcscan_candidates", lambda base, limit, timeout: ([], []))
+
+    def fake_rpc(url, method, params, timeout):
+        if method == "eth_blockNumber":
+            return "0x64"
+        if method == "eth_getLogs":
+            if url == primary and params[0]["topics"][0] == poll.TRANSFER_TOPIC:
+                return [transfer]
+            return []
+        if method == "eth_getCode":
+            if url == primary:
+                raise urllib.error.HTTPError(url, 429, "Too Many Requests", {}, None)
+            return "0x6000"
+        assert method == "eth_call"
+        assert url == fallback
+        return {
+            poll.NAME_SELECTOR: dynamic_string("Token"),
+            poll.SYMBOL_SELECTOR: bytes32_string("TKN"),
+            poll.DECIMALS_SELECTOR: "0x" + uint_word(18),
+            poll.TOTAL_SUPPLY_SELECTOR: "0x" + uint_word(1000),
+        }[params[0]["data"]]
+
+    monkeypatch.setattr(poll, "rpc_call", fake_rpc)
+
+    status = poll.run_once(tmp_path, [primary, fallback], "")
+
+    assert status["ok"] is True
+    assert status["rpc_url"] == primary
+    assert status["checkpoint_advanced"] is True
+    assert json.loads((tmp_path / "meme-source-inbox/arc-onchain.json").read_text())["count"] == 1
+
+
 def test_main_uses_official_fallback_when_circle_endpoint_is_unavailable(monkeypatch, tmp_path):
     poll = load_module()
 

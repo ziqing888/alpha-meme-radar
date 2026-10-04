@@ -146,6 +146,10 @@ _ACTIVE_LOG_QUERY_BUDGET: contextvars.ContextVar[_LogQueryBudget | None] = conte
     "arc_log_query_budget",
     default=None,
 )
+_ACTIVE_METADATA_RPC_URLS: contextvars.ContextVar[tuple[str, ...]] = contextvars.ContextVar(
+    "arc_metadata_rpc_urls",
+    default=(),
+)
 _LOG_RANGE_HINT = re.compile(
     r"retry\s+with\s+(?:the\s+)?range\s+(0x[0-9a-f]+|\d+)\s*-\s*(0x[0-9a-f]+|\d+)",
     re.IGNORECASE,
@@ -459,6 +463,22 @@ def _verify_erc20(
     )
 
 
+def _verify_erc20_with_fallback(
+    rpc_url: str, contract_address: str, timeout_seconds: float
+) -> VerificationResult:
+    urls = [rpc_url]
+    urls.extend(url for url in _ACTIVE_METADATA_RPC_URLS.get() if url != rpc_url)
+    unresolved_errors: list[str] = []
+    for candidate_url in urls:
+        verification = _verify_erc20(candidate_url, contract_address, timeout_seconds)
+        if verification.status != "unknown":
+            return verification
+        unresolved_errors.extend(
+            f"{candidate_url}:{error}" for error in verification.errors
+        )
+    return VerificationResult("unknown", errors=tuple(unresolved_errors))
+
+
 def collect_rpc_events(
     rpc_url: str,
     from_block: int,
@@ -498,7 +518,9 @@ def collect_rpc_events(
     for row in raw_rows:
         contract = str(row["contract_address"])
         if contract not in metadata:
-            metadata[contract] = _verify_erc20(rpc_url, contract, timeout_seconds)
+            metadata[contract] = _verify_erc20_with_fallback(
+                rpc_url, contract, timeout_seconds
+            )
         verification = metadata[contract]
         if verification.status == "unknown":
             unresolved.append(f"{contract}:{','.join(verification.errors)}")
@@ -798,6 +820,7 @@ def run_once(
     from_block = 0
     unresolved_contracts: set[str] = set()
     budget_token = _ACTIVE_LOG_QUERY_BUDGET.set(query_budget)
+    metadata_urls_token = _ACTIVE_METADATA_RPC_URLS.set(tuple(valid_urls))
     try:
         for candidate_url in valid_urls:
             try:
@@ -838,6 +861,7 @@ def run_once(
             except Exception as exc:  # noqa: BLE001 - try the next validated endpoint
                 rpc_errors.append({"url": candidate_url, "error": str(exc)})
     finally:
+        _ACTIVE_METADATA_RPC_URLS.reset(metadata_urls_token)
         _ACTIVE_LOG_QUERY_BUDGET.reset(budget_token)
     if not rpc_url:
         status = {
