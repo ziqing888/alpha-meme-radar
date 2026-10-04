@@ -934,6 +934,12 @@ def _source_error_text(value: Any) -> list[str]:
 
 
 def _source_result_is_rate_limited(result: dict[str, Any]) -> bool:
+    if (
+        result.get("source") == "arc_onchain"
+        and result.get("ok") is True
+        and result.get("checkpoint_advanced") is True
+    ):
+        return False
     details = " ".join(
         text
         for field in (

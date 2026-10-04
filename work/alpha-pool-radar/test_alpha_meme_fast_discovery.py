@@ -1779,7 +1779,7 @@ def test_arc_fast_source_health_preserves_explicit_stale_status_and_adapter_time
     assert health["arc_onchain"]["error"] == "checkpoint_stale"
 
 
-def test_nested_arc_rpc_http_429_activates_source_backoff(tmp_path):
+def test_successful_arc_fallback_does_not_activate_source_backoff(tmp_path):
     calls = []
 
     def refresher(_out_dir):
@@ -1788,6 +1788,42 @@ def test_nested_arc_rpc_http_429_activates_source_backoff(tmp_path):
             "source": "arc_onchain",
             "status": "degraded",
             "ok": True,
+            "checkpoint_advanced": True,
+            "observed_at": "2026-09-12T10:00:00+00:00",
+            "rpc_errors": [{"url": "https://primary", "error": "HTTP Error 429: Too Many Requests"}],
+            "arcscan_errors": [],
+        }
+
+    fast.refresh_fast_source_on_cadence(
+        tmp_path,
+        source="arc_onchain",
+        refresher=refresher,
+        min_interval_seconds=2,
+        rate_limit_backoff_seconds=120,
+        now_monotonic=100,
+    )
+    second = fast.refresh_fast_source_on_cadence(
+        tmp_path,
+        source="arc_onchain",
+        refresher=refresher,
+        min_interval_seconds=2,
+        rate_limit_backoff_seconds=120,
+        now_monotonic=105,
+    )
+
+    assert len(calls) == 2
+    assert second.get("skipped") is not True
+
+
+def test_failed_arc_rpc_http_429_activates_source_backoff(tmp_path):
+    calls = []
+
+    def refresher(_out_dir):
+        calls.append(True)
+        return {
+            "source": "arc_onchain",
+            "status": "error",
+            "ok": False,
             "observed_at": "2026-09-12T10:00:00+00:00",
             "rpc_errors": [{"url": "https://primary", "error": "HTTP Error 429: Too Many Requests"}],
             "arcscan_errors": [],
