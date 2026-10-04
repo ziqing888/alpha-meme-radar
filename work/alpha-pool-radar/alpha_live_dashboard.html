@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OKX 实盘</title>
+<style>
+*{box-sizing:border-box;letter-spacing:0}body{margin:0;background:#090d11;color:#e6edf3;font:14px/1.6 system-ui,sans-serif}main{max-width:1180px;margin:auto;padding:24px}header{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid #303842;padding-bottom:16px}h1{font-size:24px;margin:0}h2{font-size:17px;margin:24px 0 10px}.muted,dt{color:#9aa9b8}#state{color:#ffbf47;font-weight:650}#wallet{overflow-wrap:anywhere;font-family:monospace}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid #303842;gap:20px;padding:20px 0}dl{margin:0}dd{margin:8px 0 0;font:600 24px/1.3 monospace}#policy{display:flex;gap:12px 24px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid #303842}.table{overflow:auto}table{border-collapse:collapse;width:100%;text-align:left}th,td{padding:12px 8px;border-bottom:1px solid #26313a;white-space:nowrap}th{color:#9aa9b8;font-size:12px}a{color:#54ddd0}#connection{color:#ed8796;min-height:24px}.positive{color:#66dfa9}.negative{color:#fa8796}@media(max-width:600px){main{padding:16px}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}header{align-items:flex-start;flex-direction:column}dd{font-size:21px}}
+.roundtrip{padding:4px 0 24px;border-bottom:1px solid #303842}.roundtrip h2{margin:12px 0 4px}.roundtrip p{margin:6px 0}.rt-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}#rt-state{font-weight:650;color:#ffbf47}.rt-progress{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;padding:0;margin:18px 0}.rt-progress li{border-top:3px solid #38414b;padding-top:6px;color:#9aa9b8;text-align:center}.rt-progress li.done{border-color:#54ddd0;color:#c9f5ed}.rt-progress li.current{border-color:#ffbf47;color:#ffbf47}.rt-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:12px 0}.rt-metrics dd{font-size:15px;overflow-wrap:anywhere}.rt-confirm,.rt-fee-toggle{display:flex;align-items:flex-start;gap:9px;margin:14px 0;max-width:780px}input[type=checkbox]{accent-color:#54ddd0;width:18px;height:18px;flex:0 0 18px;margin:3px 0}.rt-fees{display:grid;grid-template-columns:minmax(0,2fr) minmax(140px,1fr);gap:12px;max-width:780px}.rt-fees[hidden]{display:none}.rt-fees label{min-width:0}.rt-fees input{display:block;width:100%;min-width:0;margin-top:4px;border:1px solid #53616e;border-radius:4px;background:#11171d;color:#e6edf3;padding:9px;font:inherit}.rt-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px}button{border:1px solid #54ddd0;border-radius:4px;padding:10px 16px;min-height:44px;background:#54ddd0;color:#08231e;font:650 14px/1.5 system-ui;cursor:pointer;max-width:100%;white-space:normal}button:disabled{background:#252c33;border-color:#38414b;color:#9aa9b8;cursor:not-allowed}input:disabled{opacity:.65}:focus-visible{outline:2px solid #ffbf47;outline-offset:3px}#rt-message{min-height:24px;color:#ffbf47}#rt-transactions{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:10px}#rt-run{overflow-wrap:anywhere;font-size:12px}@media(max-width:600px){.rt-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.rt-fees{grid-template-columns:minmax(0,1fr)}.rt-progress{gap:5px;font-size:12px}.rt-actions{align-items:stretch;flex-direction:column}.rt-actions button{width:100%}}
+.rt-modes{display:flex;flex-wrap:wrap;gap:10px 24px;border:0;padding:8px 0;margin:4px 0 12px}.rt-modes legend{color:#9aa9b8;padding:0}.rt-modes label{display:flex;align-items:center;gap:8px;min-height:32px}.rt-modes input{accent-color:#54ddd0;width:18px;height:18px;margin:0}.rt-mode-detail{overflow-wrap:anywhere;margin:6px 0;color:#9aa9b8}
+.chain-statuses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#303842;border:1px solid #303842;margin:16px 0}.chain-status{background:#0d1318;padding:12px 14px;min-width:0}.chain-status strong{display:block}.chain-status span{display:block;color:#9aa9b8;overflow-wrap:anywhere}.chain-status.attention strong,.chain-status.degraded strong,.chain-status.stale strong{color:#ffbf47}.chain-status.running strong{color:#66dfa9}@media(max-width:600px){.chain-statuses{grid-template-columns:minmax(0,1fr)}}
+</style></head><body><main>
+<header><div><h1>OKX 实盘 · 多链</h1><div id="wallet" class="muted">读取账户配置</div></div><div><div id="state">连接中</div><div id="updated" class="muted">心跳 --</div></div></header>
+<div id="connection" role="status"></div>
+<section id="chain-statuses" class="chain-statuses" aria-label="执行链状态"></section>
+<section class="roundtrip" aria-labelledby="rt-title">
+<div class="rt-heading"><h2 id="rt-title">一次性实盘测试 · 原策略 MEME</h2><span id="rt-state" role="status">读取测试状态</span></div>
+<fieldset class="rt-modes"><legend>测试模式（共享测试记录）</legend><label><input type="radio" name="rt-mode" id="rt-mode-meme" value="strategy_meme" checked disabled>原策略 MEME</label><label><input type="radio" name="rt-mode" id="rt-mode-stablecoin" value="stablecoin" disabled>稳定币 USDT</label></fieldset>
+<p><strong>买入最多 $1，另加 Gas 总计最多 $1。</strong>滑点固定 1%。买入 Gas 上限 $0.50；授权与卖出 Gas 合计上限 $0.50。</p>
+<p id="rt-description" class="muted">按原策略入场规则筛选 MEME，买入最多 $1；确认成交后，仅卖出本次新获得的全部代币。不使用常规策略退出规则，测试结束即停止。</p>
+<p class="muted">默认不接受额外正滑点费用。两个模式共用测试记录；发起后不可通过此页面重试，失败也不重置。</p>
+<p id="rt-wallet" class="muted" style="overflow-wrap:anywhere">测试账户读取中</p>
+<div class="rt-mode-detail"><div id="rt-mode-report">本次选择：原策略 MEME</div><div id="rt-candidate">候选代币由执行器选择，尚未确认。</div><div id="rt-entry">入场分支：尚未确认</div></div>
+<ol class="rt-progress" aria-label="测试进度"><li>检查</li><li>买入</li><li>授权</li><li>卖出</li><li>完成</li></ol>
+<div class="rt-metrics"><dl><dt>投入 BNB</dt><dd id="rt-amount">--</dd></dl><dl><dt>Gas 支出 BNB</dt><dd id="rt-gas">--</dd></dl><dl><dt>净盈亏 BNB</dt><dd id="rt-pnl">--</dd></dl><dl><dt id="rt-remaining-label">剩余 MEME（最小单位）</dt><dd id="rt-remaining">--</dd></dl></div>
+<div id="rt-message" role="status" aria-live="polite"></div>
+<div id="rt-transactions"></div><p id="rt-hash-note" class="muted" hidden>交易哈希可能仅已准备，不代表已广播或成交。</p><div id="rt-run" class="muted"></div>
+<p id="rt-historical" class="muted" style="overflow-wrap:anywhere"></p>
+<label class="rt-fee-toggle"><input type="checkbox" id="rt-fee-enabled" disabled><span>额外授权正滑点费用（可选，默认关闭）</span></label>
+<div id="rt-fees" class="rt-fees" hidden>
+<label>指定费用收款地址<input id="rt-recipient" type="text" maxlength="42" spellcheck="false" autocomplete="off" placeholder="0x…" disabled></label>
+<label>最高费率（千分比 0–100）<input id="rt-cap" type="number" min="0" max="100" step="1" value="0" disabled></label>
+<p id="rt-fee-summary" class="muted"></p>
+</div>
+<label class="rt-confirm"><input type="checkbox" id="rt-confirm" disabled><span id="rt-confirm-label">我确认使用上方账户按原策略筛选 MEME，买入最多 $1，并在确认成交后卖出本次新获得的全部代币；接受上述滑点、Gas 上限及我主动勾选的费用授权。结束即停止。</span></label>
+<div class="rt-actions"><button id="rt-start" type="button" disabled>执行一次 $1 往返测试</button><span id="rt-updated" class="muted">尚未发起；账户余额与交易条件将在执行前检查。</span></div>
+</section>
+<section class="stats"><dl><dt>策略剩余额度（估算）</dt><dd id="cash">--</dd></dl><dl><dt>链上已实现净盈亏</dt><dd id="pnl">--</dd></dl><dl><dt>真实持仓</dt><dd id="positions-count">--</dd></dl><dl><dt>待确认订单</dt><dd id="pending">--</dd></dl></section>
+<div id="policy"></div><p class="muted">BSC：首次发现 1万至10万美元、最多追至首次市值 2.2 倍；Robinhood Chain：只管理已有持仓</p>
+<div id="issues" class="muted"></div>
+<h2>持仓</h2><div class="table"><table><thead><tr><th>币种</th><th>剩余数量</th><th>入场价格（估算）</th><th>当前价格</th><th>当前收益</th><th>退出判断</th></tr></thead><tbody id="positions"></tbody></table></div>
+<h2>最近订单</h2><div class="table"><table><thead><tr><th>时间</th><th>币种</th><th>方向</th><th>状态</th><th>链上净盈亏</th><th>链上交易</th></tr></thead><tbody id="orders"></tbody></table></div>
+<p class="muted">链上净盈亏按钱包实际收支计算，已扣买入、授权和卖出 Gas；旧成交缺少结算字段时显示“--”。</p>
+</main><script>
+const $=id=>document.getElementById(id);
+const states={not_configured:'未配置',not_started:'策略执行器未启动',disabled:'策略实盘未启用',stale:'策略心跳过期 · 运行状态未知',identity_mismatch:'账户记录不匹配',running:'策略实盘运行中',attention:'运行中 · 有待处理项',degraded:'运行降级 · 请检查'};
+const orderStates={submitting:'提交中',pending:'等待链上确认',unknown:'结果未知',reconcile_required:'需要对账',rejected:'未提交',failed:'交易失败',filled:'链上已确认'};
+const money=x=>x===null||x===undefined?'--':'$'+Number(x).toLocaleString('en-US',{maximumFractionDigits:4});
+const nativePnl=(x,symbol)=>x===null||x===undefined?'--':(Number(x)>=0?'+':'')+Number(x).toLocaleString('en-US',{maximumFractionDigits:8})+' '+(symbol||'');
+const percent=x=>x===null||x===undefined?'--':(Number(x)>=0?'+':'')+Number(x).toFixed(1)+'%';
+const date=x=>x?new Date(x).toLocaleString('zh-CN',{hour12:false}):'--';
+const token=x=>x.symbol||x.token.slice(0,6)+'…'+x.token.slice(-4);
+function rows(id,items,width,render){const root=$(id);root.replaceChildren();if(!items.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=width;td.textContent='暂无记录';tr.append(td);root.append(tr);return;}for(const item of items){const tr=document.createElement('tr');for(const value of render(item)){const td=document.createElement('td');if(value instanceof Node)td.append(value);else td.textContent=value;tr.append(td);}root.append(tr);}}
+function quantity(p){if(p.remaining_atomic===null||p.decimals===null)return '--';const d=p.decimals,s=p.remaining_atomic.padStart(d+1,'0');return d?s.slice(0,-d)+'.'+s.slice(-d).replace(/0+$/,''):s;}
+function renderChains(chains){const root=$('chain-statuses');root.replaceChildren();for(const item of chains||[]){const box=document.createElement('div');box.className='chain-status '+(item.state||'');const title=document.createElement('strong');title.textContent=item.chain==='robinhood'?'Robinhood Chain':'BSC';const detail=document.createElement('span');const pnl=nativePnl(item.realized_pnl_native,item.native_symbol);detail.textContent=(item.state_label||states[item.state]||'状态未知')+' · '+(item.activity_message||'')+(pnl==='--'?'':' · 已实现 '+pnl);box.append(title,detail);root.append(box);}root.hidden=!root.childElementCount;}
+async function refresh(){try{const r=await fetch('/status.json',{cache:'no-store',signal:AbortSignal.timeout(8000)});if(!r.ok)throw Error('status');const s=await r.json();$('connection').textContent='';$('wallet').textContent=(s.engine==='okx-dex-sdk'?'SDK 实盘账户 ':'')+(s.wallet||'尚未配置账户');$('state').textContent=(s.state_label||states[s.state]||'状态未知')+(s.entries_paused?' · 新开仓暂停':'');$('updated').textContent=(s.engine==='okx-dex-sdk'?'SDK 心跳 ':'心跳 ')+date(s.updated_at);renderChains(s.chains);$('cash').textContent=money(s.cash_usd_estimate);const chainPnls=(s.chains||[]).filter(x=>x.realized_pnl_native!==null&&x.realized_pnl_native!==undefined);$('pnl').textContent=chainPnls.length?chainPnls.map(x=>nativePnl(x.realized_pnl_native,x.native_symbol)).join(' / '):nativePnl(s.realized_pnl_native,s.native_symbol);const pnlTotal=chainPnls.length?chainPnls.reduce((sum,x)=>sum+Number(x.realized_pnl_native||0),0):Number(s.realized_pnl_native||0);$('pnl').className=pnlTotal>0?'positive':pnlTotal<0?'negative':'';$('positions-count').textContent=s.open_positions??'--';$('pending').textContent=s.pending_orders??'--';const p=s.policy;$('policy').textContent=`配置：本金 $${p.reference_capital_usd} · 单笔 $${p.order_notional_usd} · 最多 ${p.max_open_positions} 仓 · 总敞口 $${p.max_exposure_usd} · 当日止损额度 $${p.daily_loss_limit_usd}`;$('issues').textContent=s.activity_message||(s.issue_count?`${s.issue_count} 项执行检查未通过，详见本机执行日志。`:'');rows('positions',s.positions,6,p=>[token(p),quantity(p),money(p.entry_price_usd),money(p.current_price_usd),percent(p.return_pct),p.exit_status==='hold'?'继续持有':'待判断']);rows('orders',[...s.orders].reverse(),6,o=>{let link='--';if(o.tx_hash&&/^0x[0-9a-fA-F]{64}$/.test(o.tx_hash)&&/^https:\/\/[^\s]+$/.test(o.explorer_url||'')){link=document.createElement('a');link.href=o.explorer_url;link.target='_blank';link.rel='noreferrer noopener';link.textContent='查看交易';}return[date(o.time),token(o),o.side==='buy'?'买入':o.side==='sell'?'卖出':'未知',orderStates[o.status]||'未知',nativePnl(o.pnl_native,o.native_symbol),link];});}catch{$('state').textContent='连接中断 · 运行状态未知';$('connection').textContent='读取失败，下方可能是旧数据。';}finally{setTimeout(refresh,3000);}}
+const rtStates={not_configured:'账户未配置',not_started:'等待确认 · 尚未下单',starting:'启动中',checking:'执行前检查',simulating:'顺序模拟检查中',buy_submitting:'准备买入',sell_submitting:'准备卖出',preflight:'执行前检查',buying:'买入中',buy_pending:'买入待确认',bought:'买入已确认',approving:'授权中',approval_pending:'授权待确认',selling:'卖出中',sell_pending:'卖出待确认',reconciling:'链上对账中',completed:'稳定币往返已完成',failed:'测试已停止',blocked:'暂不可发起',attention:'需要核对',stopped:'已停止'};
+const rtReasons={not_configured:'尚未完成本机账户配置。',configuration_changed:'账户配置已变化，当前页面不允许发起。',runner_unavailable:'一次性执行入口尚未就绪，未启用下单。',worker_running:'账户已有执行任务运行，暂不可发起。',awaiting_confirmation:'尚未下单。确认后仅尝试启动一次。',waiting_for_report:'请求已受理，等待执行器写入状态。',launch_failed:'启动失败。已有测试记录，不允许重试，不会自动重试。',child_exit_before_report:'执行进程已退出，但未生成报告。结果需核对，不会重试。',attempt_recorded_no_report:'已有启动记录，暂无执行报告。结果需核对，不允许重试。',report_unreadable_or_mismatched:'已有报告，但内容不可读或账户不匹配。不允许重试。',report_requires_review:'执行器返回待处理原因，请核对本机执行报告。',completed:'已完成，本页面不再接受新的测试。',buy_failed:'买入未完成，测试停止。',sell_failed:'卖出未完成，请核对剩余 USDT。',approval_failed:'授权未完成，测试停止。',insufficient_native_balance:'BNB 余额不足以支付交易与 Gas。',gas_exceeds_0_5_usd:'Gas 超过本次上限，已停止。',dag_trim_consent_required:'路由含未授权的正滑点费用，已拒绝。',dag_trim_recipient_mismatch:'费用收款地址与授权不符，已拒绝。',dag_trim_cap_exceeded:'路由费率超过授权上限，已拒绝。',submission_deadline_expired:'报价或提交时限已过，已停止。',deadline_invalid:'交易有效期不符合限制，已停止。',quote_expired:'报价已过期，已停止。',security_not_passed:'代币检查未通过，已停止。',allowance_not_ready:'授权额度尚未确认。',approval_pending:'等待授权交易确认。',wallet_nonce_pending:'钱包存在待确认交易。',journal_unresolved_do_not_retry:'账户有未完成对账，不能重复提交。',broadcast_unknown_do_not_retry:'提交结果未知，请核对链上记录；不会重试。',roundtrip_already_exists:'已有一次性测试记录，不允许重试。',roundtrip_probe_failed:'测试未完成，请核对本机报告。',rpc_request_failed:'链上查询失败，结果需核对。'};
+const rtErrors={request_forbidden:'请求校验失败，请刷新页面核对状态。',confirmation_required:'请先明确确认本次测试。',fee_policy_invalid:'费用地址或千分比上限不正确。',unexpected_fields:'请求参数不符合固定测试范围。',request_invalid:'请求格式错误。',json_required:'请求格式错误。',request_too_large:'请求过大。',start_blocked:'当前状态不允许启动。',launch_failed:'启动失败，已有测试记录，不允许重试。'};
+Object.assign(rtReasons,{entries_paused:'账户已暂停新交易。',strategy_account_not_idle:'账户仍有策略持仓或订单，测试未发起。',unresolved_account_transactions:'账户有待核对交易，测试未发起。',transaction_failed:'交易未完成，请核对链上记录。',confirmation_timeout:'链上确认超时，结果待核对；不重复提交。',fill_identity_or_amount_mismatch:'成交账户或数量不符，需核对。',explicit_live_environment_required:'执行器未获得明确实盘授权。',provider_verification_incomplete:'接口验证尚未通过。',test_buy_exceeds_1_usd:'买入金额超过 $1，已拒绝。',insufficient_gas_reserve:'BNB 不足以覆盖最多 $1 的 Gas 预算。',wallet_balance_changed:'账户余额发生变化，需核对。',approval_requires_reconciliation:'授权结果待核对，不重复提交。',original_holdings_changed:'原有 USDT 余额变化，需核对。',test_already_attempted:'已有一次性尝试记录，不允许重试。',test_check_failed:'执行检查未通过，请核对本机报告。',test_gas_budget_exceeded:'Gas 总预算超过 $1，已停止。',test_cancelled_nonce_requires_review:'存在已取消的交易准备记录，需核对。',roundtrip_simulation_failed:'顺序模拟未通过，未开始买入。',dag_calldata_expired:'交易有效期已过，已拒绝。',dag_deadline_too_short:'交易剩余有效期不足，已拒绝。'});
+Object.assign(rtReasons,{no_strategy_candidate:'当前没有符合原策略入场规则的候选，未开始买入。',strategy_input_unavailable:'原策略输入不可用，未开始买入。',strategy_input_stale:'原策略输入已过期，未开始买入。',strategy_candidate_expired:'候选信号已过期，已停止。',strategy_security_failed:'候选代币检查未通过，已停止。',test_token_mismatch:'交易代币与本次候选不符，已拒绝。',strategy_pool_mismatch:'交易池与原策略候选不符，已拒绝。',sell_failed:'卖出未完成，请核对剩余代币。',original_holdings_changed:'原有代币余额变化，需核对。'});
+rtErrors.test_mode_invalid='测试模式不符合固定范围。';
+let rtData=null,csrfToken='',rtBusy=false,rtUncertain=false,rtConsumed=false,feeTouched=false,feePrefilled=false;
+function rtMode(){return $('rt-mode-meme').checked?'strategy_meme':'stablecoin';}
+function rtModeCopy(){
+  const meme=rtMode()==='strategy_meme',label=meme?'原策略 MEME':'稳定币 USDT';
+  $('rt-title').textContent=meme?'一次性实盘测试 · 原策略 MEME':'一次性实盘测试 · BNB → USDT → BNB';
+  $('rt-description').textContent=meme?'按原策略入场规则筛选 MEME，买入最多 $1；确认成交后，仅卖出本次新获得的全部代币。不使用常规策略退出规则，测试结束即停止。':'这是固定 BNB → USDT → BNB 的稳定币往返测试，不是 MEME 策略，也不会持续运行机器人。';
+  $('rt-confirm-label').textContent=meme?'我确认使用上方账户按原策略筛选 MEME，买入最多 $1，并在确认成交后卖出本次新获得的全部代币；接受上述滑点、Gas 上限及我主动勾选的费用授权。结束即停止。':'我确认使用上方账户发起一次真实的 $1 BNB → USDT → BNB 测试，并接受上述滑点、Gas 上限及我主动勾选的费用授权。';
+  const recorded=rtData?.attempted||rtData?.existing_report;
+  $('rt-mode-report').textContent=(recorded?'已记录模式：':'本次选择：')+(recorded&&rtData.test_mode===null?'无法确认':label);
+  const symbol=rtData?.symbol||(meme?'MEME':'USDT');
+  $('rt-remaining-label').textContent=`剩余 ${symbol}（最小单位）`;
+  $('rt-candidate').textContent=rtData?.token?`报告代币：${symbol} · ${rtData.token}`:meme?'候选代币由执行器从原策略输入选择，尚未确认。':'固定代币：USDT';
+  const arms={first_discovery:'首次发现',narrative_breakout:'大叙事突破'};
+  $('rt-entry').textContent='入场分支：'+(arms[rtData?.execution_arm]||(meme?'尚未确认':'不适用（稳定币测试）'));
+}
+function feeValid(){return !$('rt-fee-enabled').checked||(/^0x[0-9a-fA-F]{40}$/.test($('rt-recipient').value)&&!/^0x0{40}$/.test($('rt-recipient').value)&&/^(?:0|[1-9][0-9]?|100)$/.test($('rt-cap').value));}
+function rtControls(){
+  const available=rtData?.can_start===true&&!rtBusy&&!rtUncertain&&!rtConsumed&&!!csrfToken;
+  $('rt-confirm').disabled=$('rt-fee-enabled').disabled=!available;
+  $('rt-mode-meme').disabled=$('rt-mode-stablecoin').disabled=!available;
+  const fees=$('rt-fee-enabled').checked;
+  $('rt-fees').hidden=!fees;
+  $('rt-recipient').disabled=$('rt-cap').disabled=!available||!fees;
+  $('rt-start').disabled=!available||!$('rt-confirm').checked||!feeValid();
+  $('rt-start').textContent=rtBusy?'正在提交一次性请求…':rtMode()==='strategy_meme'?'执行一次 $1 MEME 往返测试':'执行一次 $1 USDT 往返测试';
+  const cap=Number($('rt-cap').value);
+  $('rt-fee-summary').textContent=feeValid()?`授权上限：实际输出的 ${(cap/10).toFixed(1)}%，且不超过正滑点。0 表示仍不接受额外费用。`:'需填写完整的非零收款地址，以及 0–100 的整数千分比。';
+  rtModeCopy();
+}
+function rtRender(s){
+  if(rtData?.wallet&&rtData.wallet!==s.wallet)$('rt-confirm').checked=false;
+  rtData=s;
+  if(s.attempted||s.existing_report)rtConsumed=true;
+  if(s.attempted||s.existing_report){$('rt-mode-meme').checked=s.test_mode==='strategy_meme';$('rt-mode-stablecoin').checked=!$('rt-mode-meme').checked;}
+  $('rt-wallet').textContent=s.wallet?'测试账户 '+s.wallet:'测试账户尚未配置';
+  const history=s.historical_fee;
+  if(history){
+    $('rt-historical').textContent=`历史预检（${date(history.created_at)}）：费用收款 ${history.recipient}，上限 ${history.max_trim_per_mille}‰（${(history.max_trim_per_mille/10).toFixed(1)}%）。不代表本次候选或新报价；实际路由仍须匹配授权地址与上限。默认不授权：若仍有收费，将在买入前停止并保留尝试记录。`;
+    if(!feeTouched&&!feePrefilled){$('rt-recipient').value=history.recipient;$('rt-cap').value=String(history.max_trim_per_mille);feePrefilled=true;}
+  }else{$('rt-historical').textContent='暂无可用历史费用档案。实际路由若含未授权费用，将在买入前停止并保留尝试记录。';}
+  $('rt-state').textContent=rtStates[s.state]||'状态待核对';
+  $('rt-message').textContent=rtReasons[s.reason]||(s.existing_report?'已有执行报告，不允许再次发起。':'');
+  for(const [id,key] of [['rt-amount','amount_native'],['rt-gas','gas_native'],['rt-pnl','pnl_native'],['rt-remaining','remaining_atomic']])$(id).textContent=s[key]??'--';
+  $('rt-pnl').className=Number(s.pnl_native)>0?'positive':Number(s.pnl_native)<0?'negative':'';
+  const stages={starting:0,checking:0,simulating:0,preflight:0,buy_submitting:1,buying:1,buy_pending:1,bought:2,approving:2,approval_pending:2,sell_submitting:3,selling:3,sell_pending:3,reconciling:3,completed:4};
+  const stage=stages[s.state]??-1;
+  document.querySelectorAll('.rt-progress li').forEach((el,i)=>{el.className=i<stage?'done':i===stage?'current':'';if(i===stage)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current');});
+  $('rt-transactions').replaceChildren();
+  for(const [label,hash] of [['买入交易',s.buy_tx],...(s.approval_txs||[]).map((h,i)=>['授权交易 '+(i+1),h]),['卖出交易',s.sell_tx]]){
+    if(typeof hash!=='string'||!/^0x[0-9a-fA-F]{64}$/.test(hash))continue;
+    const link=document.createElement('a');link.href='https://bscscan.com/tx/'+hash;link.target='_blank';link.rel='noreferrer noopener';link.textContent=label;$('rt-transactions').append(link);
+  }
+  $('rt-run').textContent=s.run_id?'测试编号 '+s.run_id:'';
+  $('rt-hash-note').hidden=!$('rt-transactions').childElementCount;
+  $('rt-updated').textContent=s.updated_at?'报告更新 '+date(s.updated_at):s.attempted||s.existing_report?'已有测试记录，不允许重试':'尚未发起；账户余额与交易条件将在执行前检查。';
+  if(stage>=0&&stage<4&&s.existing_report){
+    if(s.process_state==='exited'){$('rt-state').textContent='执行进程已退出 · 结果待核对';$('rt-message').textContent='保留执行器最后报告，不能据此确认交易已停止或成交；不允许重试。';}
+    else if(s.report_fresh===false){$('rt-state').textContent='报告心跳过期 · 进度未知';$('rt-message').textContent='报告未及时更新，进度待核对；不要重复提交。';}
+    else if(s.process_state==='unobserved'){$('rt-state').textContent+=' · 报告状态';$('rt-message').textContent='当前页面未跟踪原进程，仅展示最近报告；不允许重试。';}
+  }
+  if(s.state==='completed'){
+    $('rt-state').textContent=s.test_mode==='strategy_meme'?'MEME 往返已完成':'稳定币往返已完成';
+    $('rt-message').textContent=s.test_mode==='strategy_meme'?'仅证明本次原策略候选的买入与新获代币卖出完成，不代表常规策略退出或持续收益已验证。测试结束，不再接受新的测试。':'仅证明本次稳定币往返完成，不代表 MEME 策略已验证。此页面不再接受新的测试。';
+  }
+  if(rtUncertain&&!s.attempted&&!s.existing_report)$('rt-message').textContent='请求结果尚未确认。请刷新核对执行记录，不要重复提交。';
+  rtControls();
+}
+async function rtRefresh(){
+  try{const response=await fetch('/roundtrip/status.json',{cache:'no-store',signal:AbortSignal.timeout(5000)});if(!response.ok)throw Error(response.status===404?'old_dashboard':'status');const value=await response.json();csrfToken=value.csrf_token;rtRender(value.roundtrip);}
+  catch(error){csrfToken='';const old=error.message==='old_dashboard';$('rt-state').textContent=old?'网页服务待更新':'测试状态读取失败';$('rt-message').textContent=old?'本机仍在运行旧版服务。运行 open_okx_dashboard.cmd 后刷新；尚未启动任何测试。':'当前状态未知，已禁用发起。';rtControls();}
+  finally{setTimeout(rtRefresh,3000);}
+}
+$('rt-confirm').addEventListener('change',rtControls);
+window.addEventListener('pageshow',()=>{$('rt-confirm').checked=false;$('rt-fee-enabled').checked=false;rtControls();});
+for(const id of ['rt-mode-meme','rt-mode-stablecoin'])$(id).addEventListener('change',()=>{$('rt-confirm').checked=false;$('rt-fee-enabled').checked=false;rtControls();});
+for(const id of ['rt-fee-enabled','rt-recipient','rt-cap'])$(id).addEventListener('input',()=>{feeTouched=true;$('rt-confirm').checked=false;rtControls();});
+$('rt-start').addEventListener('click',async()=>{
+  if($('rt-start').disabled)return;
+  const payload={confirmed:true,fee_enabled:$('rt-fee-enabled').checked,test_mode:rtMode()};
+  if(payload.fee_enabled){payload.trim_recipient=$('rt-recipient').value;payload.max_trim_per_mille=Number($('rt-cap').value);}
+  rtBusy=true;rtControls();
+  try{const response=await fetch('/roundtrip/start',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':csrfToken},body:JSON.stringify(payload),signal:AbortSignal.timeout(10000)});const value=await response.json();if(value.roundtrip)rtRender(value.roundtrip);if(!response.ok){$('rt-message').textContent=rtErrors[value.error]||'请求未完成，请核对状态。';}else{$('rt-confirm').checked=false;}}
+  catch{rtUncertain=true;$('rt-message').textContent='请求结果尚未确认。请刷新核对执行记录，不要重复提交。';}
+  finally{rtBusy=false;rtControls();}
+});
+refresh();rtRefresh();
+</script></body></html>

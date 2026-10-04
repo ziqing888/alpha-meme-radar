@@ -1,0 +1,1847 @@
+{
+  "schema_version": 3,
+  "observed_at": "2026-09-10T12:02:00+00:00",
+  "monitor_status": "healthy",
+  "source_health": {
+    "gmgn": {
+      "status": "healthy",
+      "last_success_at": "2026-09-10T12:02:00+00:00"
+    },
+    "okx": {
+      "status": "healthy",
+      "last_success_at": "2026-09-10T12:02:00+00:00"
+    }
+  },
+  "tokens": [
+    {
+      "id": "bsc:0x1111111111111111111111111111111111111111",
+      "identity": {
+        "chain": "bsc",
+        "contract_address": "0x1111111111111111111111111111111111111111",
+        "symbol": "SOLO",
+        "name": "Solo Launch",
+        "creator": null,
+        "launchpad": null,
+        "real_created_at": null,
+        "real_created_source": null,
+        "first_seen_at": "2026-09-10T11:59:59+00:00",
+        "first_seen_source": "gmgn_trenches",
+        "pair_created_at": null,
+        "migration_at": null
+      },
+      "primary_state": "new",
+      "active_states": [
+        "new",
+        "stale"
+      ],
+      "state_version": 1,
+      "state_updated_at": "2026-09-10T11:59:59+00:00",
+      "market": {
+        "status": "unknown",
+        "observed_at": "2026-09-10T11:59:59+00:00",
+        "price_usd": null,
+        "market_cap_usd": null,
+        "liquidity_usd": null,
+        "volume_1m_usd": null,
+        "volume_5m_usd": null,
+        "volume_24h_usd": null,
+        "buys_1m": null,
+        "sells_1m": null,
+        "buys_5m": null,
+        "sells_5m": null,
+        "unique_buyers_1m": null,
+        "unique_buyers_5m": null,
+        "net_buy_flow_1m_usd": null,
+        "net_buy_flow_5m_usd": null,
+        "trades_1m": null,
+        "trades_5m": null,
+        "holders": null,
+        "top10_holder_pct": null,
+        "dev_holder_pct": null,
+        "bundler_pct": null,
+        "sniper_pct": null,
+        "field_status": {
+          "price_usd": "unknown",
+          "market_cap_usd": "unknown",
+          "liquidity_usd": "unknown",
+          "volume_1m_usd": "unknown",
+          "volume_5m_usd": "unknown",
+          "volume_24h_usd": "unknown",
+          "buys_1m": "unknown",
+          "sells_1m": "unknown",
+          "buys_5m": "unknown",
+          "sells_5m": "unknown",
+          "unique_buyers_1m": "unknown",
+          "unique_buyers_5m": "unknown",
+          "net_buy_flow_1m_usd": "unknown",
+          "net_buy_flow_5m_usd": "unknown",
+          "trades_1m": "unknown",
+          "trades_5m": "unknown",
+          "holders": "unknown",
+          "top10_holder_pct": "unknown",
+          "dev_holder_pct": "unknown",
+          "bundler_pct": "unknown",
+          "sniper_pct": "unknown"
+        },
+        "snapshots": [
+          {
+            "observed_at": "2026-09-10T11:59:59+00:00",
+            "field_source": null,
+            "price_usd": null,
+            "market_cap_usd": null,
+            "liquidity_usd": null,
+            "volume_1m_usd": null,
+            "volume_5m_usd": null,
+            "volume_24h_usd": null,
+            "buys_1m": null,
+            "sells_1m": null,
+            "buys_5m": null,
+            "sells_5m": null,
+            "unique_buyers_1m": null,
+            "unique_buyers_5m": null,
+            "net_buy_flow_1m_usd": null,
+            "net_buy_flow_5m_usd": null,
+            "trades_1m": null,
+            "trades_5m": null,
+            "holders": null,
+            "top10_holder_pct": null,
+            "dev_holder_pct": null,
+            "bundler_pct": null,
+            "sniper_pct": null,
+            "field_status": {
+              "price_usd": "unknown",
+              "market_cap_usd": "unknown",
+              "liquidity_usd": "unknown",
+              "volume_1m_usd": "unknown",
+              "volume_5m_usd": "unknown",
+              "volume_24h_usd": "unknown",
+              "buys_1m": "unknown",
+              "sells_1m": "unknown",
+              "buys_5m": "unknown",
+              "sells_5m": "unknown",
+              "unique_buyers_1m": "unknown",
+              "unique_buyers_5m": "unknown",
+              "net_buy_flow_1m_usd": "unknown",
+              "net_buy_flow_5m_usd": "unknown",
+              "trades_1m": "unknown",
+              "trades_5m": "unknown",
+              "holders": "unknown",
+              "top10_holder_pct": "unknown",
+              "dev_holder_pct": "unknown",
+              "bundler_pct": "unknown",
+              "sniper_pct": "unknown"
+            }
+          }
+        ]
+      },
+      "ranking_axes": {
+        "flow": {
+          "status": "unknown",
+          "direction": "unknown",
+          "sample_count": 1,
+          "previous_positive": false,
+          "current": {
+            "unique_buyers": null,
+            "net_buy_flow": null,
+            "trade_frequency": null,
+            "volume": null
+          },
+          "deltas": {
+            "unique_buyers": null,
+            "net_buy_flow": null,
+            "trade_frequency": null,
+            "volume": null
+          },
+          "baseline_deltas": {
+            "unique_buyers": null,
+            "net_buy_flow": null,
+            "trade_frequency": null,
+            "volume": null
+          }
+        },
+        "quality": {
+          "status": "unknown",
+          "liquidity_usd": null,
+          "holders": null,
+          "top10_holder_pct": null,
+          "dev_holder_pct": null,
+          "bundler_pct": null,
+          "sniper_pct": null,
+          "audit_evidence_count": null
+        },
+        "risk": {
+          "hard_blocked": false,
+          "hard_failures": [],
+          "soft_flags": [],
+          "status": "unknown"
+        },
+        "narrative": {
+          "status": "unknown",
+          "evidence_ids": []
+        },
+        "timing": {
+          "status": "known",
+          "real_age_seconds": null,
+          "first_seen_age_seconds": 121.0,
+          "latest_event_age_seconds": 121.0,
+          "current_observation_age_seconds": 121.0,
+          "last_observation_age_seconds": 121.0,
+          "market_snapshot_age_seconds": 121.0,
+          "previous_meaningful_event_age_seconds": null,
+          "pair_created_at": null,
+          "pair_age_seconds": null,
+          "migration_at": null,
+          "migration_age_seconds": null,
+          "last_observation_at": "2026-09-10T11:59:59+00:00",
+          "market_observed_at": "2026-09-10T11:59:59+00:00",
+          "previous_meaningful_event_at": null,
+          "report_refreshed_at": "2026-09-10T12:02:00+00:00"
+        }
+      },
+      "resonance": {
+        "subtype": null,
+        "signal_resonance": false,
+        "provider_resonance": false,
+        "time_confirmation": false,
+        "provider_families": [
+          "gmgn"
+        ],
+        "signal_lanes": [
+          "new_launch"
+        ],
+        "lanes_by_family": {
+          "gmgn": [
+            "new_launch"
+          ]
+        },
+        "evidence_ids": [
+          "solo-1"
+        ],
+        "freshness_window_seconds": 900,
+        "historical_provider_families": [
+          "gmgn"
+        ],
+        "historical_evidence_ids": [
+          "solo-1"
+        ]
+      },
+      "wallet_evidence": {
+        "verified_buyers": 0,
+        "wallet_addresses": [],
+        "evidence_ids": [],
+        "status": "unknown",
+        "freshness_window_seconds": 900,
+        "conflicting_wallets": [],
+        "conflicting_evidence_ids": [],
+        "historical_verified_buyers": 0,
+        "historical_wallet_addresses": []
+      },
+      "audit_facts": [],
+      "risk": {
+        "hard_blocked": false,
+        "hard_failures": [],
+        "soft_flags": [],
+        "status": "unknown"
+      },
+      "events": [
+        {
+          "schema_version": 1,
+          "event_id": "solo-1",
+          "chain": "bsc",
+          "contract_address": "0x1111111111111111111111111111111111111111",
+          "event_type": "new_launch",
+          "event_at": "2026-09-10T11:59:59+00:00",
+          "observed_at": "2026-09-10T11:59:59+00:00",
+          "provider_family": "gmgn",
+          "provider_feed": "gmgn_trenches",
+          "evidence_role": "discovery",
+          "signal_lane": "new_launch",
+          "provider_event_id": "solo-1",
+          "source_url": null,
+          "raw_fingerprint": "raw-solo-1",
+          "upstream_provider": "gmgn",
+          "event_time_basis": "event_at",
+          "counts_for_resonance": true,
+          "symbol": "SOLO",
+          "name": "Solo Launch"
+        }
+      ],
+      "missing_evidence": [
+        "bundler_pct",
+        "buys_1m",
+        "buys_5m",
+        "dev_holder_pct",
+        "holders",
+        "liquidity_usd",
+        "market_cap_usd",
+        "net_buy_flow_1m_usd",
+        "net_buy_flow_5m_usd",
+        "price_usd",
+        "sells_1m",
+        "sells_5m",
+        "sniper_pct",
+        "top10_holder_pct",
+        "trades_1m",
+        "trades_5m",
+        "unique_buyers_1m",
+        "unique_buyers_5m",
+        "volume_1m_usd",
+        "volume_24h_usd",
+        "volume_5m_usd"
+      ],
+      "ai": {
+        "status": "pending",
+        "analyzed_at": null,
+        "evidence_ids": []
+      },
+      "freshness": {
+        "status": "stale",
+        "last_observed_at": "2026-09-10T11:59:59+00:00",
+        "report_refreshed_at": "2026-09-10T12:02:00+00:00"
+      },
+      "state_history": [
+        {
+          "state": "new",
+          "state_version": 1,
+          "observed_at": "2026-09-10T11:59:59+00:00"
+        }
+      ]
+    },
+    {
+      "id": "bsc:0x2222222222222222222222222222222222222222",
+      "identity": {
+        "chain": "bsc",
+        "contract_address": "0x2222222222222222222222222222222222222222",
+        "symbol": "STACK",
+        "name": "Stacked Signal",
+        "creator": null,
+        "launchpad": null,
+        "real_created_at": null,
+        "real_created_source": null,
+        "first_seen_at": "2026-09-10T12:00:00+00:00",
+        "first_seen_source": "985_smartmoney",
+        "pair_created_at": null,
+        "migration_at": null
+      },
+      "primary_state": "smart_cluster",
+      "active_states": [
+        "new",
+        "building",
+        "resonating",
+        "smart_cluster"
+      ],
+      "state_version": 3,
+      "state_updated_at": "2026-09-10T12:01:00+00:00",
+      "market": {
+        "status": "known",
+        "observed_at": "2026-09-10T12:02:00+00:00",
+        "price_usd": null,
+        "market_cap_usd": null,
+        "liquidity_usd": null,
+        "volume_1m_usd": 800,
+        "volume_5m_usd": null,
+        "volume_24h_usd": null,
+        "buys_1m": null,
+        "sells_1m": null,
+        "buys_5m": null,
+        "sells_5m": null,
+        "unique_buyers_1m": 12,
+        "unique_buyers_5m": null,
+        "net_buy_flow_1m_usd": 300,
+        "net_buy_flow_5m_usd": null,
+        "trades_1m": 20,
+        "trades_5m": null,
+        "holders": null,
+        "top10_holder_pct": null,
+        "dev_holder_pct": null,
+        "bundler_pct": null,
+        "sniper_pct": null,
+        "field_status": {
+          "price_usd": "unknown",
+          "market_cap_usd": "unknown",
+          "liquidity_usd": "unknown",
+          "volume_1m_usd": "known",
+          "volume_5m_usd": "unknown",
+          "volume_24h_usd": "unknown",
+          "buys_1m": "unknown",
+          "sells_1m": "unknown",
+          "buys_5m": "unknown",
+          "sells_5m": "unknown",
+          "unique_buyers_1m": "known",
+          "unique_buyers_5m": "unknown",
+          "net_buy_flow_1m_usd": "known",
+          "net_buy_flow_5m_usd": "unknown",
+          "trades_1m": "known",
+          "trades_5m": "unknown",
+          "holders": "unknown",
+          "top10_holder_pct": "unknown",
+          "dev_holder_pct": "unknown",
+          "bundler_pct": "unknown",
+          "sniper_pct": "unknown"
+        },
+        "snapshots": [
+          {
+            "observed_at": "2026-09-10T12:00:00+00:00",
+            "field_source": "dexscreener",
+            "price_usd": 0.0002,
+            "market_cap_usd": 12000,
+            "liquidity_usd": 15000,
+            "volume_1m_usd": 100,
+            "volume_5m_usd": 350,
+            "volume_24h_usd": null,
+            "buys_1m": 3,
+            "sells_1m": 1,
+            "buys_5m": null,
+            "sells_5m": null,
+            "unique_buyers_1m": 2,
+            "unique_buyers_5m": null,
+            "net_buy_flow_1m_usd": 50,
+            "net_buy_flow_5m_usd": null,
+            "trades_1m": 4,
+            "trades_5m": null,
+            "holders": 120,
+            "top10_holder_pct": 17.15,
+            "dev_holder_pct": null,
+            "bundler_pct": null,
+            "sniper_pct": null,
+            "field_status": {
+              "price_usd": "known",
+              "market_cap_usd": "known",
+              "liquidity_usd": "known",
+              "volume_1m_usd": "known",
+              "volume_5m_usd": "known",
+              "volume_24h_usd": "unknown",
+              "buys_1m": "known",
+              "sells_1m": "known",
+              "buys_5m": "unknown",
+              "sells_5m": "unknown",
+              "unique_buyers_1m": "known",
+              "unique_buyers_5m": "unknown",
+              "net_buy_flow_1m_usd": "known",
+              "net_buy_flow_5m_usd": "unknown",
+              "trades_1m": "known",
+              "trades_5m": "unknown",
+              "holders": "known",
+              "top10_holder_pct": "known",
+              "dev_holder_pct": "unknown",
+              "bundler_pct": "unknown",
+              "sniper_pct": "unknown"
+            }
+          },
+          {
+            "observed_at": "2026-09-10T12:01:00+00:00",
+            "field_source": null,
+            "price_usd": null,
+            "market_cap_usd": null,
+            "liquidity_usd": null,
+            "volume_1m_usd": 400,
+            "volume_5m_usd": null,
+            "volume_24h_usd": null,
+            "buys_1m": null,
+            "sells_1m": null,
+            "buys_5m": null,
+            "sells_5m": null,
+            "unique_buyers_1m": 7,
+            "unique_buyers_5m": null,
+            "net_buy_flow_1m_usd": 180,
+            "net_buy_flow_5m_usd": null,
+            "trades_1m": 12,
+            "trades_5m": null,
+            "holders": null,
+            "top10_holder_pct": null,
+            "dev_holder_pct": null,
+            "bundler_pct": null,
+            "sniper_pct": null,
+            "field_status": {
+              "price_usd": "unknown",
+              "market_cap_usd": "unknown",
+              "liquidity_usd": "unknown",
+              "volume_1m_usd": "known",
+              "volume_5m_usd": "unknown",
+              "volume_24h_usd": "unknown",
+              "buys_1m": "unknown",
+              "sells_1m": "unknown",
+              "buys_5m": "unknown",
+              "sells_5m": "unknown",
+              "unique_buyers_1m": "known",
+              "unique_buyers_5m": "unknown",
+              "net_buy_flow_1m_usd": "known",
+              "net_buy_flow_5m_usd": "unknown",
+              "trades_1m": "known",
+              "trades_5m": "unknown",
+              "holders": "unknown",
+              "top10_holder_pct": "unknown",
+              "dev_holder_pct": "unknown",
+              "bundler_pct": "unknown",
+              "sniper_pct": "unknown"
+            }
+          },
+          {
+            "observed_at": "2026-09-10T12:02:00+00:00",
+            "field_source": null,
+            "price_usd": null,
+            "market_cap_usd": null,
+            "liquidity_usd": null,
+            "volume_1m_usd": 800,
+            "volume_5m_usd": null,
+            "volume_24h_usd": null,
+            "buys_1m": null,
+            "sells_1m": null,
+            "buys_5m": null,
+            "sells_5m": null,
+            "unique_buyers_1m": 12,
+            "unique_buyers_5m": null,
+            "net_buy_flow_1m_usd": 300,
+            "net_buy_flow_5m_usd": null,
+            "trades_1m": 20,
+            "trades_5m": null,
+            "holders": null,
+            "top10_holder_pct": null,
+            "dev_holder_pct": null,
+            "bundler_pct": null,
+            "sniper_pct": null,
+            "field_status": {
+              "price_usd": "unknown",
+              "market_cap_usd": "unknown",
+              "liquidity_usd": "unknown",
+              "volume_1m_usd": "known",
+              "volume_5m_usd": "unknown",
+              "volume_24h_usd": "unknown",
+              "buys_1m": "unknown",
+              "sells_1m": "unknown",
+              "buys_5m": "unknown",
+              "sells_5m": "unknown",
+              "unique_buyers_1m": "known",
+              "unique_buyers_5m": "unknown",
+              "net_buy_flow_1m_usd": "known",
+              "net_buy_flow_5m_usd": "unknown",
+              "trades_1m": "known",
+              "trades_5m": "unknown",
+              "holders": "unknown",
+              "top10_holder_pct": "unknown",
+              "dev_holder_pct": "unknown",
+              "bundler_pct": "unknown",
+              "sniper_pct": "unknown"
+            }
+          }
+        ]
+      },
+      "ranking_axes": {
+        "flow": {
+          "status": "known",
+          "direction": "accelerating",
+          "sample_count": 3,
+          "previous_positive": true,
+          "current": {
+            "unique_buyers": 12,
+            "net_buy_flow": 300,
+            "trade_frequency": 20,
+            "volume": 800
+          },
+          "deltas": {
+            "unique_buyers": 5,
+            "net_buy_flow": 120,
+            "trade_frequency": 8,
+            "volume": 400
+          },
+          "baseline_deltas": {
+            "unique_buyers": 7.5,
+            "net_buy_flow": 185.0,
+            "trade_frequency": 12.0,
+            "volume": 550.0
+          }
+        },
+        "quality": {
+          "status": "unknown",
+          "liquidity_usd": null,
+          "holders": null,
+          "top10_holder_pct": null,
+          "dev_holder_pct": null,
+          "bundler_pct": null,
+          "sniper_pct": null,
+          "audit_evidence_count": null
+        },
+        "risk": {
+          "hard_blocked": false,
+          "hard_failures": [],
+          "soft_flags": [],
+          "status": "unknown"
+        },
+        "narrative": {
+          "status": "unknown",
+          "evidence_ids": []
+        },
+        "timing": {
+          "status": "known",
+          "real_age_seconds": null,
+          "first_seen_age_seconds": 120.0,
+          "latest_event_age_seconds": 120.0,
+          "current_observation_age_seconds": 0.0,
+          "last_observation_age_seconds": 0.0,
+          "market_snapshot_age_seconds": 0.0,
+          "previous_meaningful_event_age_seconds": 120.0,
+          "pair_created_at": null,
+          "pair_age_seconds": null,
+          "migration_at": null,
+          "migration_age_seconds": null,
+          "last_observation_at": "2026-09-10T12:02:00+00:00",
+          "market_observed_at": "2026-09-10T12:02:00+00:00",
+          "previous_meaningful_event_at": "2026-09-10T12:00:00+00:00",
+          "report_refreshed_at": "2026-09-10T12:02:00+00:00"
+        }
+      },
+      "resonance": {
+        "subtype": "full",
+        "signal_resonance": true,
+        "provider_resonance": true,
+        "time_confirmation": true,
+        "provider_families": [
+          "985",
+          "gmgn",
+          "okx"
+        ],
+        "signal_lanes": [
+          "market_flow",
+          "new_launch",
+          "smart_money"
+        ],
+        "lanes_by_family": {
+          "985": [
+            "smart_money"
+          ],
+          "gmgn": [
+            "new_launch"
+          ],
+          "okx": [
+            "market_flow"
+          ]
+        },
+        "evidence_ids": [
+          "stack-new",
+          "stack-okx",
+          "stack-wallet-1",
+          "stack-wallet-2"
+        ],
+        "freshness_window_seconds": 900,
+        "historical_provider_families": [
+          "985",
+          "gmgn",
+          "okx"
+        ],
+        "historical_evidence_ids": [
+          "stack-new",
+          "stack-okx",
+          "stack-wallet-1",
+          "stack-wallet-2"
+        ]
+      },
+      "wallet_evidence": {
+        "verified_buyers": 2,
+        "wallet_addresses": [
+          "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ],
+        "evidence_ids": [
+          "stack-wallet-1",
+          "stack-wallet-2"
+        ],
+        "status": "verified",
+        "freshness_window_seconds": 900,
+        "conflicting_wallets": [],
+        "conflicting_evidence_ids": [],
+        "historical_verified_buyers": 2,
+        "historical_wallet_addresses": [
+          "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ]
+      },
+      "audit_facts": [],
+      "risk": {
+        "hard_blocked": false,
+        "hard_failures": [],
+        "soft_flags": [],
+        "status": "unknown"
+      },
+      "events": [
+        {
+          "schema_version": 1,
+          "event_id": "stack-new",
+          "chain": "bsc",
+          "contract_address": "0x2222222222222222222222222222222222222222",
+          "event_type": "new_launch",
+          "event_at": "2026-09-10T12:00:00+00:00",
+          "observed_at": "2026-09-10T12:00:00+00:00",
+          "provider_family": "gmgn",
+          "provider_feed": "gmgn_trenches",
+          "evidence_role": "discovery",
+          "signal_lane": "new_launch",
+          "provider_event_id": "stack-new",
+          "source_url": null,
+          "raw_fingerprint": "raw-stack-new",
+          "upstream_provider": "gmgn",
+          "event_time_basis": "event_at",
+          "counts_for_resonance": true,
+          "symbol": "STACK",
+          "name": "Stacked Signal"
+        },
+        {
+          "schema_version": 1,
+          "event_id": "stack-okx",
+          "chain": "bsc",
+          "contract_address": "0x2222222222222222222222222222222222222222",
+          "event_type": "market_flow",
+          "event_at": "2026-09-10T12:00:00+00:00",
+          "observed_at": "2026-09-10T12:00:00+00:00",
+          "provider_family": "okx",
+          "provider_feed": "okx_signal",
+          "evidence_role": "market",
+          "signal_lane": "market_flow",
+          "provider_event_id": "stack-okx",
+          "source_url": null,
+          "raw_fingerprint": "raw-stack-okx",
+          "upstream_provider": "okx",
+          "event_time_basis": "event_at",
+          "counts_for_resonance": true,
+          "symbol": "STACK",
+          "name": "Stacked Signal"
+        },
+        {
+          "schema_version": 1,
+          "event_id": "stack-wallet-1",
+          "chain": "bsc",
+          "contract_address": "0x2222222222222222222222222222222222222222",
+          "event_type": "smart_money",
+          "event_at": "2026-09-10T12:00:00+00:00",
+          "observed_at": "2026-09-10T12:00:00+00:00",
+          "provider_family": "985",
+          "provider_feed": "985_smartmoney",
+          "evidence_role": "wallet",
+          "signal_lane": "smart_money",
+          "provider_event_id": "stack-wallet-1",
+          "source_url": null,
+          "raw_fingerprint": "raw-stack-wallet-1",
+          "upstream_provider": "985",
+          "event_time_basis": "event_at",
+          "counts_for_resonance": true,
+          "wallet_address": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "direction": "buy",
+          "wallet_verified": true,
+          "amount_usd": 125,
+          "symbol": "STACK",
+          "name": "Stacked Signal"
+        },
+        {
+          "schema_version": 1,
+          "event_id": "stack-wallet-2",
+          "chain": "bsc",
+          "contract_address": "0x2222222222222222222222222222222222222222",
+          "event_type": "smart_money",
+          "event_at": "2026-09-10T12:00:00+00:00",
+          "observed_at": "2026-09-10T12:00:00+00:00",
+          "provider_family": "985",
+          "provider_feed": "985_smartmoney",
+          "evidence_role": "wallet",
+          "signal_lane": "smart_money",
+          "provider_event_id": "stack-wallet-2",
+          "source_url": null,
+          "raw_fingerprint": "raw-stack-wallet-2",
+          "upstream_provider": "985",
+          "event_time_basis": "event_at",
+          "counts_for_resonance": true,
+          "wallet_address": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "direction": "buy",
+          "wallet_verified": true,
+          "amount_usd": 250,
+          "symbol": "STACK",
+          "name": "Stacked Signal"
+        }
+      ],
+      "missing_evidence": [
+        "bundler_pct",
+        "buys_1m",
+        "buys_5m",
+        "dev_holder_pct",
+        "holders",
+        "liquidity_usd",
+        "market_cap_usd",
+        "net_buy_flow_5m_usd",
+        "price_usd",
+        "sells_1m",
+        "sells_5m",
+        "sniper_pct",
+        "top10_holder_pct",
+        "trades_5m",
+        "unique_buyers_5m",
+        "volume_24h_usd",
+        "volume_5m_usd"
+      ],
+      "ai": {
+        "status": "pending",
+        "analyzed_at": null,
+        "evidence_ids": []
+      },
+      "freshness": {
+        "status": "fresh",
+        "last_observed_at": "2026-09-10T12:02:00+00:00",
+        "report_refreshed_at": "2026-09-10T12:02:00+00:00"
+      },
+      "state_history": [
+        {
+          "state": "new",
+          "state_version": 1,
+          "observed_at": "2026-09-10T12:00:00+00:00"
+        },
+        {
+          "state": "smart_cluster",
+          "state_version": 2,
+          "observed_at": "2026-09-10T12:00:00+00:00"
+        },
+        {
+          "state": "smart_cluster",
+          "state_version": 3,
+          "observed_at": "2026-09-10T12:01:00+00:00"
+        }
+      ]
+    },
+    {
+      "id": "bsc:0x3333333333333333333333333333333333333333",
+      "identity": {
+        "chain": "bsc",
+        "contract_address": "0x3333333333333333333333333333333333333333",
+        "symbol": "BLOCK",
+        "name": "Blocked But Visible",
+        "creator": null,
+        "launchpad": null,
+        "real_created_at": "2026-09-10T11:55:00+00:00",
+        "real_created_source": "bsc_onchain",
+        "first_seen_at": "2026-09-10T12:00:00+00:00",
+        "first_seen_source": "bsc_onchain",
+        "pair_created_at": null,
+        "migration_at": null
+      },
+      "primary_state": "blocked_risk",
+      "active_states": [
+        "new",
+        "blocked_risk"
+      ],
+      "state_version": 2,
+      "state_updated_at": "2026-09-10T12:00:00+00:00",
+      "market": {
+        "status": "known",
+        "observed_at": "2026-09-10T12:00:00+00:00",
+        "price_usd": null,
+        "market_cap_usd": null,
+        "liquidity_usd": 900,
+        "volume_1m_usd": null,
+        "volume_5m_usd": null,
+        "volume_24h_usd": null,
+        "buys_1m": null,
+        "sells_1m": null,
+        "buys_5m": null,
+        "sells_5m": null,
+        "unique_buyers_1m": null,
+        "unique_buyers_5m": null,
+        "net_buy_flow_1m_usd": null,
+        "net_buy_flow_5m_usd": null,
+        "trades_1m": null,
+        "trades_5m": null,
+        "holders": null,
+        "top10_holder_pct": null,
+        "dev_holder_pct": null,
+        "bundler_pct": null,
+        "sniper_pct": null,
+        "field_status": {
+          "price_usd": "unknown",
+          "market_cap_usd": "unknown",
+          "liquidity_usd": "known",
+          "volume_1m_usd": "unknown",
+          "volume_5m_usd": "unknown",
+          "volume_24h_usd": "unknown",
+          "buys_1m": "unknown",
+          "sells_1m": "unknown",
+          "buys_5m": "unknown",
+          "sells_5m": "unknown",
+          "unique_buyers_1m": "unknown",
+          "unique_buyers_5m": "unknown",
+          "net_buy_flow_1m_usd": "unknown",
+          "net_buy_flow_5m_usd": "unknown",
+          "trades_1m": "unknown",
+          "trades_5m": "unknown",
+          "holders": "unknown",
+          "top10_holder_pct": "unknown",
+          "dev_holder_pct": "unknown",
+          "bundler_pct": "unknown",
+          "sniper_pct": "unknown"
+        },
+        "snapshots": [
+          {
+            "observed_at": "2026-09-10T12:00:00+00:00",
+            "field_source": null,
+            "price_usd": null,
+            "market_cap_usd": null,
+            "liquidity_usd": 900,
+            "volume_1m_usd": null,
+            "volume_5m_usd": null,
+            "volume_24h_usd": null,
+            "buys_1m": null,
+            "sells_1m": null,
+            "buys_5m": null,
+            "sells_5m": null,
+            "unique_buyers_1m": null,
+            "unique_buyers_5m": null,
+            "net_buy_flow_1m_usd": null,
+            "net_buy_flow_5m_usd": null,
+            "trades_1m": null,
+            "trades_5m": null,
+            "holders": null,
+            "top10_holder_pct": null,
+            "dev_holder_pct": null,
+            "bundler_pct": null,
+            "sniper_pct": null,
+            "field_status": {
+              "price_usd": "unknown",
+              "market_cap_usd": "unknown",
+              "liquidity_usd": "known",
+              "volume_1m_usd": "unknown",
+              "volume_5m_usd": "unknown",
+              "volume_24h_usd": "unknown",
+              "buys_1m": "unknown",
+              "sells_1m": "unknown",
+              "buys_5m": "unknown",
+              "sells_5m": "unknown",
+              "unique_buyers_1m": "unknown",
+              "unique_buyers_5m": "unknown",
+              "net_buy_flow_1m_usd": "unknown",
+              "net_buy_flow_5m_usd": "unknown",
+              "trades_1m": "unknown",
+              "trades_5m": "unknown",
+              "holders": "unknown",
+              "top10_holder_pct": "unknown",
+              "dev_holder_pct": "unknown",
+              "bundler_pct": "unknown",
+              "sniper_pct": "unknown"
+            }
+          }
+        ]
+      },
+      "ranking_axes": {
+        "flow": {
+          "status": "unknown",
+          "direction": "unknown",
+          "sample_count": 1,
+          "previous_positive": false,
+          "current": {
+            "unique_buyers": null,
+            "net_buy_flow": null,
+            "trade_frequency": null,
+            "volume": null
+          },
+          "deltas": {
+            "unique_buyers": null,
+            "net_buy_flow": null,
+            "trade_frequency": null,
+            "volume": null
+          },
+          "baseline_deltas": {
+            "unique_buyers": null,
+            "net_buy_flow": null,
+            "trade_frequency": null,
+            "volume": null
+          }
+        },
+        "quality": {
+          "status": "known",
+          "liquidity_usd": 900,
+          "holders": null,
+          "top10_holder_pct": null,
+          "dev_holder_pct": null,
+          "bundler_pct": null,
+          "sniper_pct": null,
+          "audit_evidence_count": null
+        },
+        "risk": {
+          "hard_blocked": true,
+          "hard_failures": [
+            "confirmed_honeypot",
+            "official_ca_conflict"
+          ],
+          "soft_flags": [],
+          "status": "blocked"
+        },
+        "narrative": {
+          "status": "unknown",
+          "evidence_ids": []
+        },
+        "timing": {
+          "status": "known",
+          "real_age_seconds": 420.0,
+          "first_seen_age_seconds": 120.0,
+          "latest_event_age_seconds": 0.0,
+          "current_observation_age_seconds": 0.0,
+          "last_observation_age_seconds": 0.0,
+          "market_snapshot_age_seconds": 120.0,
+          "previous_meaningful_event_age_seconds": 0.0,
+          "pair_created_at": null,
+          "pair_age_seconds": null,
+          "migration_at": null,
+          "migration_age_seconds": null,
+          "last_observation_at": "2026-09-10T12:02:00+00:00",
+          "market_observed_at": "2026-09-10T12:00:00+00:00",
+          "previous_meaningful_event_at": "2026-09-10T12:02:00+00:00",
+          "report_refreshed_at": "2026-09-10T12:02:00+00:00"
+        }
+      },
+      "resonance": {
+        "subtype": null,
+        "signal_resonance": false,
+        "provider_resonance": false,
+        "time_confirmation": false,
+        "provider_families": [
+          "onchain"
+        ],
+        "signal_lanes": [
+          "new_launch"
+        ],
+        "lanes_by_family": {
+          "onchain": [
+            "new_launch"
+          ]
+        },
+        "evidence_ids": [
+          "block-1"
+        ],
+        "freshness_window_seconds": 900,
+        "historical_provider_families": [
+          "985",
+          "onchain"
+        ],
+        "historical_evidence_ids": [
+          "1987d5f664fdd278e84fc6771f209dc37d336b5c32edf246d191e90283a66338",
+          "6a441e85a11067387c44781bb0d90a17806cc25f8806501a8b301b3893d5eb83",
+          "block-1"
+        ]
+      },
+      "wallet_evidence": {
+        "verified_buyers": 0,
+        "wallet_addresses": [],
+        "evidence_ids": [],
+        "status": "conflicting",
+        "freshness_window_seconds": 900,
+        "conflicting_wallets": [
+          "0xcccccccccccccccccccccccccccccccccccccccc"
+        ],
+        "conflicting_evidence_ids": [
+          "1987d5f664fdd278e84fc6771f209dc37d336b5c32edf246d191e90283a66338",
+          "6a441e85a11067387c44781bb0d90a17806cc25f8806501a8b301b3893d5eb83"
+        ],
+        "historical_verified_buyers": 1,
+        "historical_wallet_addresses": [
+          "0xcccccccccccccccccccccccccccccccccccccccc"
+        ]
+      },
+      "audit_facts": [],
+      "risk": {
+        "hard_blocked": true,
+        "hard_failures": [
+          "confirmed_honeypot",
+          "official_ca_conflict"
+        ],
+        "soft_flags": [],
+        "status": "blocked"
+      },
+      "events": [
+        {
+          "schema_version": 1,
+          "event_id": "block-1",
+          "chain": "bsc",
+          "contract_address": "0x3333333333333333333333333333333333333333",
+          "event_type": "new_launch",
+          "event_at": "2026-09-10T11:55:00+00:00",
+          "observed_at": "2026-09-10T12:00:00+00:00",
+          "provider_family": "onchain",
+          "provider_feed": "bsc_onchain",
+          "evidence_role": "discovery",
+          "signal_lane": "new_launch",
+          "provider_event_id": "block-1",
+          "source_url": null,
+          "raw_fingerprint": "raw-block-1",
+          "upstream_provider": "onchain",
+          "event_time_basis": "event_at",
+          "counts_for_resonance": true,
+          "symbol": "BLOCK",
+          "name": "Blocked But Visible"
+        },
+        {
+          "schema_version": 1,
+          "chain": "bsc",
+          "contract_address": "0x3333333333333333333333333333333333333333",
+          "event_type": "smart_money",
+          "event_at": "2026-09-10T12:02:00+00:00",
+          "observed_at": "2026-09-10T12:02:00+00:00",
+          "provider_family": "985",
+          "provider_feed": "985_smartmoney",
+          "evidence_role": "wallet",
+          "signal_lane": "smart_money",
+          "provider_event_id": "block-wallet-buy",
+          "source_url": null,
+          "raw_fingerprint": "993b4a69caf3623eb12b6c53acf19853225302e28777cfcee9c5a3191c4c5ad2",
+          "upstream_provider": "985",
+          "event_time_basis": "event_at",
+          "counts_for_resonance": true,
+          "wallet_address": "0xcccccccccccccccccccccccccccccccccccccccc",
+          "direction": "buy",
+          "wallet_verified": true,
+          "event_id": "1987d5f664fdd278e84fc6771f209dc37d336b5c32edf246d191e90283a66338"
+        },
+        {
+          "schema_version": 1,
+          "chain": "bsc",
+          "contract_address": "0x3333333333333333333333333333333333333333",
+          "event_type": "smart_money",
+          "event_at": "2026-09-10T12:02:00+00:00",
+          "observed_at": "2026-09-10T12:02:00+00:00",
+          "provider_family": "985",
+          "provider_feed": "985_smartmoney",
+          "evidence_role": "wallet",
+          "signal_lane": "smart_money",
+          "provider_event_id": "block-wallet-sell",
+          "source_url": null,
+          "raw_fingerprint": "955e6d931348034fcfb87a64634afc4e8624ac2a67de4ae8c9dcb48d9fd2b458",
+          "upstream_provider": "985",
+          "event_time_basis": "event_at",
+          "counts_for_resonance": true,
+          "wallet_address": "0xcccccccccccccccccccccccccccccccccccccccc",
+          "direction": "sell",
+          "wallet_verified": true,
+          "event_id": "6a441e85a11067387c44781bb0d90a17806cc25f8806501a8b301b3893d5eb83"
+        }
+      ],
+      "missing_evidence": [
+        "bundler_pct",
+        "buys_1m",
+        "buys_5m",
+        "dev_holder_pct",
+        "holders",
+        "market_cap_usd",
+        "net_buy_flow_1m_usd",
+        "net_buy_flow_5m_usd",
+        "price_usd",
+        "sells_1m",
+        "sells_5m",
+        "sniper_pct",
+        "top10_holder_pct",
+        "trades_1m",
+        "trades_5m",
+        "unique_buyers_1m",
+        "unique_buyers_5m",
+        "volume_1m_usd",
+        "volume_24h_usd",
+        "volume_5m_usd"
+      ],
+      "ai": {
+        "status": "pending",
+        "analyzed_at": null,
+        "evidence_ids": []
+      },
+      "freshness": {
+        "status": "fresh",
+        "last_observed_at": "2026-09-10T12:02:00+00:00",
+        "report_refreshed_at": "2026-09-10T12:02:00+00:00"
+      },
+      "state_history": [
+        {
+          "state": "new",
+          "state_version": 1,
+          "observed_at": "2026-09-10T12:00:00+00:00"
+        },
+        {
+          "state": "blocked_risk",
+          "state_version": 2,
+          "observed_at": "2026-09-10T12:00:00+00:00"
+        }
+      ]
+    },
+    {
+      "id": "bsc:0x4444444444444444444444444444444444444444",
+      "identity": {
+        "chain": "bsc",
+        "contract_address": "0x4444444444444444444444444444444444444444",
+        "symbol": "OLDIE",
+        "name": "Old Without Revival",
+        "creator": null,
+        "launchpad": null,
+        "real_created_at": "2025-01-01T00:00:00+00:00",
+        "real_created_source": "bsc_onchain",
+        "first_seen_at": "2026-09-10T11:59:59+00:00",
+        "first_seen_source": "bsc_onchain",
+        "pair_created_at": null,
+        "migration_at": null
+      },
+      "primary_state": "new",
+      "active_states": [
+        "new",
+        "stale"
+      ],
+      "state_version": 1,
+      "state_updated_at": "2026-09-10T11:59:59+00:00",
+      "market": {
+        "status": "unknown",
+        "observed_at": "2026-09-10T11:59:59+00:00",
+        "price_usd": null,
+        "market_cap_usd": null,
+        "liquidity_usd": null,
+        "volume_1m_usd": null,
+        "volume_5m_usd": null,
+        "volume_24h_usd": null,
+        "buys_1m": null,
+        "sells_1m": null,
+        "buys_5m": null,
+        "sells_5m": null,
+        "unique_buyers_1m": null,
+        "unique_buyers_5m": null,
+        "net_buy_flow_1m_usd": null,
+        "net_buy_flow_5m_usd": null,
+        "trades_1m": null,
+        "trades_5m": null,
+        "holders": null,
+        "top10_holder_pct": null,
+        "dev_holder_pct": null,
+        "bundler_pct": null,
+        "sniper_pct": null,
+        "field_status": {
+          "price_usd": "unknown",
+          "market_cap_usd": "unknown",
+          "liquidity_usd": "unknown",
+          "volume_1m_usd": "unknown",
+          "volume_5m_usd": "unknown",
+          "volume_24h_usd": "unknown",
+          "buys_1m": "unknown",
+          "sells_1m": "unknown",
+          "buys_5m": "unknown",
+          "sells_5m": "unknown",
+          "unique_buyers_1m": "unknown",
+          "unique_buyers_5m": "unknown",
+          "net_buy_flow_1m_usd": "unknown",
+          "net_buy_flow_5m_usd": "unknown",
+          "trades_1m": "unknown",
+          "trades_5m": "unknown",
+          "holders": "unknown",
+          "top10_holder_pct": "unknown",
+          "dev_holder_pct": "unknown",
+          "bundler_pct": "unknown",
+          "sniper_pct": "unknown"
+        },
+        "snapshots": [
+          {
+            "observed_at": "2026-09-10T11:59:59+00:00",
+            "field_source": null,
+            "price_usd": null,
+            "market_cap_usd": null,
+            "liquidity_usd": null,
+            "volume_1m_usd": null,
+            "volume_5m_usd": null,
+            "volume_24h_usd": null,
+            "buys_1m": null,
+            "sells_1m": null,
+            "buys_5m": null,
+            "sells_5m": null,
+            "unique_buyers_1m": null,
+            "unique_buyers_5m": null,
+            "net_buy_flow_1m_usd": null,
+            "net_buy_flow_5m_usd": null,
+            "trades_1m": null,
+            "trades_5m": null,
+            "holders": null,
+            "top10_holder_pct": null,
+            "dev_holder_pct": null,
+            "bundler_pct": null,
+            "sniper_pct": null,
+            "field_status": {
+              "price_usd": "unknown",
+              "market_cap_usd": "unknown",
+              "liquidity_usd": "unknown",
+              "volume_1m_usd": "unknown",
+              "volume_5m_usd": "unknown",
+              "volume_24h_usd": "unknown",
+              "buys_1m": "unknown",
+              "sells_1m": "unknown",
+              "buys_5m": "unknown",
+              "sells_5m": "unknown",
+              "unique_buyers_1m": "unknown",
+              "unique_buyers_5m": "unknown",
+              "net_buy_flow_1m_usd": "unknown",
+              "net_buy_flow_5m_usd": "unknown",
+              "trades_1m": "unknown",
+              "trades_5m": "unknown",
+              "holders": "unknown",
+              "top10_holder_pct": "unknown",
+              "dev_holder_pct": "unknown",
+              "bundler_pct": "unknown",
+              "sniper_pct": "unknown"
+            }
+          }
+        ]
+      },
+      "ranking_axes": {
+        "flow": {
+          "status": "unknown",
+          "direction": "unknown",
+          "sample_count": 1,
+          "previous_positive": false,
+          "current": {
+            "unique_buyers": null,
+            "net_buy_flow": null,
+            "trade_frequency": null,
+            "volume": null
+          },
+          "deltas": {
+            "unique_buyers": null,
+            "net_buy_flow": null,
+            "trade_frequency": null,
+            "volume": null
+          },
+          "baseline_deltas": {
+            "unique_buyers": null,
+            "net_buy_flow": null,
+            "trade_frequency": null,
+            "volume": null
+          }
+        },
+        "quality": {
+          "status": "unknown",
+          "liquidity_usd": null,
+          "holders": null,
+          "top10_holder_pct": null,
+          "dev_holder_pct": null,
+          "bundler_pct": null,
+          "sniper_pct": null,
+          "audit_evidence_count": null
+        },
+        "risk": {
+          "hard_blocked": false,
+          "hard_failures": [],
+          "soft_flags": [],
+          "status": "unknown"
+        },
+        "narrative": {
+          "status": "unknown",
+          "evidence_ids": []
+        },
+        "timing": {
+          "status": "known",
+          "real_age_seconds": 53352120.0,
+          "first_seen_age_seconds": 121.0,
+          "latest_event_age_seconds": 53352120.0,
+          "current_observation_age_seconds": 121.0,
+          "last_observation_age_seconds": 121.0,
+          "market_snapshot_age_seconds": 121.0,
+          "previous_meaningful_event_age_seconds": null,
+          "pair_created_at": null,
+          "pair_age_seconds": null,
+          "migration_at": null,
+          "migration_age_seconds": null,
+          "last_observation_at": "2026-09-10T11:59:59+00:00",
+          "market_observed_at": "2026-09-10T11:59:59+00:00",
+          "previous_meaningful_event_at": null,
+          "report_refreshed_at": "2026-09-10T12:02:00+00:00"
+        }
+      },
+      "resonance": {
+        "subtype": null,
+        "signal_resonance": false,
+        "provider_resonance": false,
+        "time_confirmation": false,
+        "provider_families": [],
+        "signal_lanes": [],
+        "lanes_by_family": {},
+        "evidence_ids": [],
+        "freshness_window_seconds": 900,
+        "historical_provider_families": [
+          "onchain"
+        ],
+        "historical_evidence_ids": [
+          "old-1"
+        ]
+      },
+      "wallet_evidence": {
+        "verified_buyers": 0,
+        "wallet_addresses": [],
+        "evidence_ids": [],
+        "status": "unknown",
+        "freshness_window_seconds": 900,
+        "conflicting_wallets": [],
+        "conflicting_evidence_ids": [],
+        "historical_verified_buyers": 0,
+        "historical_wallet_addresses": []
+      },
+      "audit_facts": [],
+      "risk": {
+        "hard_blocked": false,
+        "hard_failures": [],
+        "soft_flags": [],
+        "status": "unknown"
+      },
+      "events": [
+        {
+          "schema_version": 1,
+          "event_id": "old-1",
+          "chain": "bsc",
+          "contract_address": "0x4444444444444444444444444444444444444444",
+          "event_type": "new_launch",
+          "event_at": "2025-01-01T00:00:00+00:00",
+          "observed_at": "2026-09-10T11:59:59+00:00",
+          "provider_family": "onchain",
+          "provider_feed": "bsc_onchain",
+          "evidence_role": "discovery",
+          "signal_lane": "new_launch",
+          "provider_event_id": "old-1",
+          "source_url": null,
+          "raw_fingerprint": "raw-old-1",
+          "upstream_provider": "onchain",
+          "event_time_basis": "event_at",
+          "counts_for_resonance": true,
+          "symbol": "OLDIE",
+          "name": "Old Without Revival"
+        }
+      ],
+      "missing_evidence": [
+        "bundler_pct",
+        "buys_1m",
+        "buys_5m",
+        "dev_holder_pct",
+        "holders",
+        "liquidity_usd",
+        "market_cap_usd",
+        "net_buy_flow_1m_usd",
+        "net_buy_flow_5m_usd",
+        "price_usd",
+        "sells_1m",
+        "sells_5m",
+        "sniper_pct",
+        "top10_holder_pct",
+        "trades_1m",
+        "trades_5m",
+        "unique_buyers_1m",
+        "unique_buyers_5m",
+        "volume_1m_usd",
+        "volume_24h_usd",
+        "volume_5m_usd"
+      ],
+      "ai": {
+        "status": "pending",
+        "analyzed_at": null,
+        "evidence_ids": []
+      },
+      "freshness": {
+        "status": "stale",
+        "last_observed_at": "2026-09-10T11:59:59+00:00",
+        "report_refreshed_at": "2026-09-10T12:02:00+00:00"
+      },
+      "state_history": [
+        {
+          "state": "new",
+          "state_version": 1,
+          "observed_at": "2026-09-10T11:59:59+00:00"
+        }
+      ]
+    },
+    {
+      "id": "bsc:0x5555555555555555555555555555555555555555",
+      "identity": {
+        "chain": "bsc",
+        "contract_address": "0x5555555555555555555555555555555555555555",
+        "symbol": "REVIVE",
+        "name": "Fresh Baseline Revival",
+        "creator": null,
+        "launchpad": null,
+        "real_created_at": "2026-09-07T12:00:00+00:00",
+        "real_created_source": "bsc_onchain",
+        "first_seen_at": "2026-09-10T12:00:00+00:00",
+        "first_seen_source": "bsc_onchain",
+        "pair_created_at": null,
+        "migration_at": null
+      },
+      "primary_state": "revival",
+      "active_states": [
+        "new",
+        "building",
+        "revival"
+      ],
+      "state_version": 3,
+      "state_updated_at": "2026-09-10T12:02:00+00:00",
+      "market": {
+        "status": "known",
+        "observed_at": "2026-09-10T12:02:00+00:00",
+        "price_usd": null,
+        "market_cap_usd": null,
+        "liquidity_usd": null,
+        "volume_1m_usd": 800,
+        "volume_5m_usd": null,
+        "volume_24h_usd": null,
+        "buys_1m": null,
+        "sells_1m": null,
+        "buys_5m": null,
+        "sells_5m": null,
+        "unique_buyers_1m": 10,
+        "unique_buyers_5m": null,
+        "net_buy_flow_1m_usd": 300,
+        "net_buy_flow_5m_usd": null,
+        "trades_1m": 20,
+        "trades_5m": null,
+        "holders": null,
+        "top10_holder_pct": null,
+        "dev_holder_pct": null,
+        "bundler_pct": null,
+        "sniper_pct": null,
+        "field_status": {
+          "price_usd": "unknown",
+          "market_cap_usd": "unknown",
+          "liquidity_usd": "unknown",
+          "volume_1m_usd": "known",
+          "volume_5m_usd": "unknown",
+          "volume_24h_usd": "unknown",
+          "buys_1m": "unknown",
+          "sells_1m": "unknown",
+          "buys_5m": "unknown",
+          "sells_5m": "unknown",
+          "unique_buyers_1m": "known",
+          "unique_buyers_5m": "unknown",
+          "net_buy_flow_1m_usd": "known",
+          "net_buy_flow_5m_usd": "unknown",
+          "trades_1m": "known",
+          "trades_5m": "unknown",
+          "holders": "unknown",
+          "top10_holder_pct": "unknown",
+          "dev_holder_pct": "unknown",
+          "bundler_pct": "unknown",
+          "sniper_pct": "unknown"
+        },
+        "snapshots": [
+          {
+            "observed_at": "2026-09-10T12:00:00+00:00",
+            "field_source": null,
+            "price_usd": null,
+            "market_cap_usd": null,
+            "liquidity_usd": null,
+            "volume_1m_usd": 200,
+            "volume_5m_usd": null,
+            "volume_24h_usd": null,
+            "buys_1m": null,
+            "sells_1m": null,
+            "buys_5m": null,
+            "sells_5m": null,
+            "unique_buyers_1m": 4,
+            "unique_buyers_5m": null,
+            "net_buy_flow_1m_usd": 80,
+            "net_buy_flow_5m_usd": null,
+            "trades_1m": 8,
+            "trades_5m": null,
+            "holders": null,
+            "top10_holder_pct": null,
+            "dev_holder_pct": null,
+            "bundler_pct": null,
+            "sniper_pct": null,
+            "field_status": {
+              "price_usd": "unknown",
+              "market_cap_usd": "unknown",
+              "liquidity_usd": "unknown",
+              "volume_1m_usd": "known",
+              "volume_5m_usd": "unknown",
+              "volume_24h_usd": "unknown",
+              "buys_1m": "unknown",
+              "sells_1m": "unknown",
+              "buys_5m": "unknown",
+              "sells_5m": "unknown",
+              "unique_buyers_1m": "known",
+              "unique_buyers_5m": "unknown",
+              "net_buy_flow_1m_usd": "known",
+              "net_buy_flow_5m_usd": "unknown",
+              "trades_1m": "known",
+              "trades_5m": "unknown",
+              "holders": "unknown",
+              "top10_holder_pct": "unknown",
+              "dev_holder_pct": "unknown",
+              "bundler_pct": "unknown",
+              "sniper_pct": "unknown"
+            }
+          },
+          {
+            "observed_at": "2026-09-10T12:01:00+00:00",
+            "field_source": null,
+            "price_usd": null,
+            "market_cap_usd": null,
+            "liquidity_usd": null,
+            "volume_1m_usd": 40,
+            "volume_5m_usd": null,
+            "volume_24h_usd": null,
+            "buys_1m": null,
+            "sells_1m": null,
+            "buys_5m": null,
+            "sells_5m": null,
+            "unique_buyers_1m": 1,
+            "unique_buyers_5m": null,
+            "net_buy_flow_1m_usd": -10,
+            "net_buy_flow_5m_usd": null,
+            "trades_1m": 2,
+            "trades_5m": null,
+            "holders": null,
+            "top10_holder_pct": null,
+            "dev_holder_pct": null,
+            "bundler_pct": null,
+            "sniper_pct": null,
+            "field_status": {
+              "price_usd": "unknown",
+              "market_cap_usd": "unknown",
+              "liquidity_usd": "unknown",
+              "volume_1m_usd": "known",
+              "volume_5m_usd": "unknown",
+              "volume_24h_usd": "unknown",
+              "buys_1m": "unknown",
+              "sells_1m": "unknown",
+              "buys_5m": "unknown",
+              "sells_5m": "unknown",
+              "unique_buyers_1m": "known",
+              "unique_buyers_5m": "unknown",
+              "net_buy_flow_1m_usd": "known",
+              "net_buy_flow_5m_usd": "unknown",
+              "trades_1m": "known",
+              "trades_5m": "unknown",
+              "holders": "unknown",
+              "top10_holder_pct": "unknown",
+              "dev_holder_pct": "unknown",
+              "bundler_pct": "unknown",
+              "sniper_pct": "unknown"
+            }
+          },
+          {
+            "observed_at": "2026-09-10T12:02:00+00:00",
+            "field_source": null,
+            "price_usd": null,
+            "market_cap_usd": null,
+            "liquidity_usd": null,
+            "volume_1m_usd": 800,
+            "volume_5m_usd": null,
+            "volume_24h_usd": null,
+            "buys_1m": null,
+            "sells_1m": null,
+            "buys_5m": null,
+            "sells_5m": null,
+            "unique_buyers_1m": 10,
+            "unique_buyers_5m": null,
+            "net_buy_flow_1m_usd": 300,
+            "net_buy_flow_5m_usd": null,
+            "trades_1m": 20,
+            "trades_5m": null,
+            "holders": null,
+            "top10_holder_pct": null,
+            "dev_holder_pct": null,
+            "bundler_pct": null,
+            "sniper_pct": null,
+            "field_status": {
+              "price_usd": "unknown",
+              "market_cap_usd": "unknown",
+              "liquidity_usd": "unknown",
+              "volume_1m_usd": "known",
+              "volume_5m_usd": "unknown",
+              "volume_24h_usd": "unknown",
+              "buys_1m": "unknown",
+              "sells_1m": "unknown",
+              "buys_5m": "unknown",
+              "sells_5m": "unknown",
+              "unique_buyers_1m": "known",
+              "unique_buyers_5m": "unknown",
+              "net_buy_flow_1m_usd": "known",
+              "net_buy_flow_5m_usd": "unknown",
+              "trades_1m": "known",
+              "trades_5m": "unknown",
+              "holders": "unknown",
+              "top10_holder_pct": "unknown",
+              "dev_holder_pct": "unknown",
+              "bundler_pct": "unknown",
+              "sniper_pct": "unknown"
+            }
+          }
+        ]
+      },
+      "ranking_axes": {
+        "flow": {
+          "status": "known",
+          "direction": "accelerating",
+          "sample_count": 3,
+          "previous_positive": true,
+          "current": {
+            "unique_buyers": 10,
+            "net_buy_flow": 300,
+            "trade_frequency": 20,
+            "volume": 800
+          },
+          "deltas": {
+            "unique_buyers": 9,
+            "net_buy_flow": 310,
+            "trade_frequency": 18,
+            "volume": 760
+          },
+          "baseline_deltas": {
+            "unique_buyers": 7.5,
+            "net_buy_flow": 265.0,
+            "trade_frequency": 15.0,
+            "volume": 680.0
+          }
+        },
+        "quality": {
+          "status": "unknown",
+          "liquidity_usd": null,
+          "holders": null,
+          "top10_holder_pct": null,
+          "dev_holder_pct": null,
+          "bundler_pct": null,
+          "sniper_pct": null,
+          "audit_evidence_count": null
+        },
+        "risk": {
+          "hard_blocked": false,
+          "hard_failures": [],
+          "soft_flags": [],
+          "status": "unknown"
+        },
+        "narrative": {
+          "status": "unknown",
+          "evidence_ids": []
+        },
+        "timing": {
+          "status": "known",
+          "real_age_seconds": 259320.0,
+          "first_seen_age_seconds": 120.0,
+          "latest_event_age_seconds": 259320.0,
+          "current_observation_age_seconds": 0.0,
+          "last_observation_age_seconds": 0.0,
+          "market_snapshot_age_seconds": 0.0,
+          "previous_meaningful_event_age_seconds": null,
+          "pair_created_at": null,
+          "pair_age_seconds": null,
+          "migration_at": null,
+          "migration_age_seconds": null,
+          "last_observation_at": "2026-09-10T12:02:00+00:00",
+          "market_observed_at": "2026-09-10T12:02:00+00:00",
+          "previous_meaningful_event_at": null,
+          "report_refreshed_at": "2026-09-10T12:02:00+00:00"
+        }
+      },
+      "resonance": {
+        "subtype": null,
+        "signal_resonance": false,
+        "provider_resonance": false,
+        "time_confirmation": true,
+        "provider_families": [],
+        "signal_lanes": [],
+        "lanes_by_family": {},
+        "evidence_ids": [],
+        "freshness_window_seconds": 900,
+        "historical_provider_families": [
+          "onchain"
+        ],
+        "historical_evidence_ids": [
+          "revive-1"
+        ]
+      },
+      "wallet_evidence": {
+        "verified_buyers": 0,
+        "wallet_addresses": [],
+        "evidence_ids": [],
+        "status": "unknown",
+        "freshness_window_seconds": 900,
+        "conflicting_wallets": [],
+        "conflicting_evidence_ids": [],
+        "historical_verified_buyers": 0,
+        "historical_wallet_addresses": []
+      },
+      "audit_facts": [],
+      "risk": {
+        "hard_blocked": false,
+        "hard_failures": [],
+        "soft_flags": [],
+        "status": "unknown"
+      },
+      "events": [
+        {
+          "schema_version": 1,
+          "event_id": "revive-1",
+          "chain": "bsc",
+          "contract_address": "0x5555555555555555555555555555555555555555",
+          "event_type": "new_launch",
+          "event_at": "2026-09-07T12:00:00+00:00",
+          "observed_at": "2026-09-10T12:00:00+00:00",
+          "provider_family": "onchain",
+          "provider_feed": "bsc_onchain",
+          "evidence_role": "discovery",
+          "signal_lane": "new_launch",
+          "provider_event_id": "revive-1",
+          "source_url": null,
+          "raw_fingerprint": "raw-revive-1",
+          "upstream_provider": "onchain",
+          "event_time_basis": "event_at",
+          "counts_for_resonance": true,
+          "symbol": "REVIVE",
+          "name": "Fresh Baseline Revival"
+        }
+      ],
+      "missing_evidence": [
+        "bundler_pct",
+        "buys_1m",
+        "buys_5m",
+        "dev_holder_pct",
+        "holders",
+        "liquidity_usd",
+        "market_cap_usd",
+        "net_buy_flow_5m_usd",
+        "price_usd",
+        "sells_1m",
+        "sells_5m",
+        "sniper_pct",
+        "top10_holder_pct",
+        "trades_5m",
+        "unique_buyers_5m",
+        "volume_24h_usd",
+        "volume_5m_usd"
+      ],
+      "ai": {
+        "status": "pending",
+        "analyzed_at": null,
+        "evidence_ids": []
+      },
+      "freshness": {
+        "status": "fresh",
+        "last_observed_at": "2026-09-10T12:02:00+00:00",
+        "report_refreshed_at": "2026-09-10T12:02:00+00:00"
+      },
+      "state_history": [
+        {
+          "state": "new",
+          "state_version": 1,
+          "observed_at": "2026-09-10T12:00:00+00:00"
+        },
+        {
+          "state": "cooling",
+          "state_version": 2,
+          "observed_at": "2026-09-10T12:01:00+00:00"
+        },
+        {
+          "state": "revival",
+          "state_version": 3,
+          "observed_at": "2026-09-10T12:02:00+00:00"
+        }
+      ]
+    }
+  ],
+  "rejections": [
+    {
+      "schema_version": 1,
+      "reason": "invalid_address",
+      "source": "gmgn_trenches",
+      "chain": "bsc",
+      "contract_address": "bad-ca",
+      "observed_at": "2026-09-10T12:00:00+00:00",
+      "raw_fingerprint": "rejection-1"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+[Unit]
+Description=Alpha Radar read-only report relay
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/alpha-relay.env
+ExecStart=/usr/bin/python3 /opt/alpha-relay/alpha_readonly_cloud_relay.py --port 8788 --report /var/lib/alpha-relay/report.json
+Restart=always
+RestartSec=3
+User=www-data
+Group=www-data
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/alpha-relay
+
+[Install]
+WantedBy=multi-user.target

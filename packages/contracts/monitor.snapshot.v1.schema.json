@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://alpha-meme-radar.local/contracts/monitor.snapshot.v1.schema.json",
+  "title": "Monitor Snapshot V1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schema_version", "observed_at", "published_at", "tokens"],
+  "properties": {
+    "schema_version": { "const": "monitor.snapshot.v1" },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "published_at": { "type": "string", "format": "date-time" },
+    "tokens": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["identity", "primary_state", "source_provenance"],
+        "properties": {
+          "identity": { "$ref": "#/$defs/tokenIdentity" },
+          "primary_state": {
+            "enum": ["new", "building", "resonating", "smart_cluster", "cooling", "trend_watch", "revival", "blocked_risk", "stale"]
+          },
+          "source_provenance": {
+            "type": "array",
+            "items": { "type": "object" }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "tokenIdentity": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["chain", "contract_address"],
+      "properties": {
+        "chain": { "type": "string", "minLength": 1 },
+        "contract_address": { "type": "string", "pattern": "^0x[0-9a-fA-F]{40}$" }
+      }
+    }
+  }
+}

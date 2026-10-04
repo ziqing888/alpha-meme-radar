@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://alpha-meme-radar.local/contracts/monitor.outcomes.v1.schema.json",
+  "title": "Monitor Outcomes V1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schema_version", "updated_at", "records", "summary"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "records": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["identity", "cohort", "entry_stage", "entry_at", "entry_market_cap_usd", "checkpoints"],
+        "properties": {
+          "identity": { "type": "string", "minLength": 1 },
+          "cohort": { "enum": ["selected", "downgraded", "blocked"] },
+          "entry_stage": { "type": "string", "minLength": 1 },
+          "entry_at": { "type": "string", "format": "date-time" },
+          "entry_market_cap_usd": { "type": "number", "exclusiveMinimum": 0 },
+          "checkpoints": { "type": "object" }
+        }
+      }
+    },
+    "summary": { "type": "object" }
+  }
+}

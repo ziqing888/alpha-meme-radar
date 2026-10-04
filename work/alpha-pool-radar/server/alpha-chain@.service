@@ -1,0 +1,31 @@
+[Unit]
+Description=Alpha Radar live executor (%i)
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/alpha-radar/armed/%i
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=alpha-radar
+Group=alpha-radar
+WorkingDirectory=/opt/alpha-radar/okx-dex-executor
+ExecStart=/opt/alpha-radar/bin/alpha-chain-runner %i
+Restart=always
+RestartSec=2
+TimeoutStopSec=30
+KillSignal=SIGTERM
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadOnlyPaths=/etc/alpha-radar /opt/alpha-radar
+ReadWritePaths=/var/lib/alpha-radar
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+LockPersonality=true
+MemoryMax=384M
+LimitNOFILE=8192
+
+[Install]
+WantedBy=multi-user.target

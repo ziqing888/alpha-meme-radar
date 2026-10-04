@@ -1,0 +1,12 @@
+﻿name = "alpha-radar-terminal"
+compatibility_date = "2025-01-15"
+pages_build_output_dir = "dist"
+
+[[kv_namespaces]]
+binding = "REPORT_KV"
+id = "cff73f97f8fd49fab8bfa1e18331c681"
+preview_id = "0a8005340e874c29b75a5842f26064ad"
+
+[[r2_buckets]]
+binding = "MONITOR_R2"
+bucket_name = "alpha-radar-monitor"

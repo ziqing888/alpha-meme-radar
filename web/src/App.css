@@ -1,0 +1,230 @@
+.gold-tier-list .gold-tier-list-item {
+  grid-template-columns: minmax(150px, 1.35fr) minmax(105px, 0.82fr) minmax(105px, 0.9fr);
+}
+
+.token-intelligence-compact {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  padding-top: 5px;
+  border-top: 1px solid rgba(127, 139, 157, 0.12);
+}
+
+.token-intelligence-compact-meta {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  min-width: 0;
+  color: var(--ot-color-text-muted);
+  font-family: var(--ot-font-ui);
+  font-size: 9px;
+  line-height: 1.3;
+}
+
+.token-intelligence-status {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 20px;
+  padding: 2px 6px;
+  border: 1px solid rgba(127, 139, 157, 0.4);
+  border-radius: 3px;
+  color: var(--ot-color-text-secondary);
+  background: rgba(127, 139, 157, 0.09);
+  font-family: var(--ot-font-ui);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.ready .token-intelligence-status {
+  border-color: rgba(70, 184, 125, 0.45);
+  color: var(--ot-color-market-up);
+  background: rgba(70, 184, 125, 0.08);
+}
+
+.partial .token-intelligence-status,
+.pending .token-intelligence-status {
+  border-color: rgba(248, 185, 81, 0.45);
+  color: var(--ot-color-warning);
+  background: rgba(248, 185, 81, 0.08);
+}
+
+.unavailable .token-intelligence-status {
+  border-color: rgba(255, 91, 110, 0.38);
+  color: var(--ot-color-danger);
+  background: rgba(255, 91, 110, 0.07);
+}
+
+.token-intelligence-judgement {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ot-color-text-secondary);
+  font-family: var(--ot-font-ui);
+  font-size: 11px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.token-intelligence-panel {
+  display: grid;
+  gap: 10px;
+  padding: 11px;
+  border: 1px solid rgba(127, 139, 157, 0.18);
+  border-left: 2px solid rgba(127, 139, 157, 0.42);
+  background: #101010;
+}
+
+.token-intelligence-panel.ready { border-left-color: rgba(70, 184, 125, 0.58); }
+.token-intelligence-panel.partial,
+.token-intelligence-panel.pending { border-left-color: rgba(248, 185, 81, 0.58); }
+.token-intelligence-panel.unavailable { border-left-color: rgba(255, 91, 110, 0.48); }
+
+.token-intelligence-head,
+.token-intelligence-sources {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.token-intelligence-head { justify-content: space-between; }
+
+.token-intelligence-head > small,
+.token-intelligence-panel section > small,
+.token-intelligence-sources > small,
+.token-intelligence-sources a small,
+.token-intelligence-sources > span small {
+  color: var(--ot-color-text-muted);
+  font-size: 10px;
+}
+
+.token-intelligence-thesis {
+  display: grid;
+  gap: 4px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(127, 139, 157, 0.14);
+}
+
+.token-intelligence-thesis > span,
+.token-intelligence-grid section > span,
+.token-intelligence-sources > span:first-child {
+  color: var(--ot-color-text-muted);
+  font-family: var(--ot-font-ui);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.token-intelligence-thesis b,
+.token-intelligence-grid b {
+  color: var(--ot-color-text-primary);
+  font-family: var(--ot-font-ui);
+  font-size: 12px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.token-intelligence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 16px;
+}
+
+.token-intelligence-grid > section {
+  display: grid;
+  align-content: start;
+  gap: 5px;
+  min-width: 0;
+  padding-left: 9px;
+  border-left: 2px solid rgba(100, 126, 255, 0.42);
+}
+
+.token-intelligence-grid > section.has-risk { border-left-color: rgba(255, 91, 110, 0.58); }
+
+.token-intelligence-grid p,
+.token-intelligence-grid ul {
+  margin: 0;
+  color: var(--ot-color-text-secondary);
+  font-family: var(--ot-font-ui);
+  font-size: 11px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.token-intelligence-grid ul {
+  display: grid;
+  gap: 3px;
+  padding-left: 15px;
+}
+
+.token-intelligence-grid code,
+.token-intelligence-contracts code {
+  color: #9daaff;
+  font-family: var(--ot-font-mono);
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+
+.token-intelligence-contracts,
+.token-intelligence-missing,
+.token-intelligence-signals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 7px;
+  min-width: 0;
+}
+
+.token-intelligence-signals small {
+  padding: 2px 5px;
+  border: 1px solid rgba(127, 139, 157, 0.28);
+  border-radius: 3px;
+  color: var(--ot-color-text-secondary);
+}
+
+.token-intelligence-signals small.danger {
+  border-color: rgba(255, 91, 110, 0.45);
+  color: var(--ot-color-danger);
+}
+
+.token-intelligence-contracts small,
+.token-intelligence-missing small { width: 100%; }
+
+.token-intelligence-missing em {
+  padding: 2px 5px;
+  border: 1px solid rgba(255, 190, 64, 0.4);
+  border-radius: 3px;
+  color: var(--ot-color-warning);
+  font-size: 10px;
+  font-style: normal;
+}
+
+.token-intelligence-sources {
+  padding-top: 8px;
+  border-top: 1px solid rgba(127, 139, 157, 0.14);
+}
+
+.token-intelligence-sources a,
+.token-intelligence-sources > span:not(:first-child) {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ot-color-accent-primary);
+  font-family: var(--ot-font-ui);
+  font-size: 10px;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+@media (max-width: 820px) {
+  .gold-tier-list .gold-tier-list-item { grid-template-columns: minmax(0, 1fr); }
+  .token-intelligence-grid { grid-template-columns: minmax(0, 1fr); }
+  .token-intelligence-compact { grid-template-columns: minmax(0, 1fr); }
+  .token-intelligence-judgement { white-space: normal; }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://alpha-meme-radar.local/contracts/intelligence.overlay.v1.schema.json",
+  "title": "Intelligence Overlay V1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schema_version", "observed_at", "published_at", "records"],
+  "properties": {
+    "schema_version": { "const": "intelligence.overlay.v1" },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "published_at": { "type": "string", "format": "date-time" },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["chain", "contract_address", "status", "source_provenance"],
+        "properties": {
+          "chain": { "type": "string", "minLength": 1 },
+          "contract_address": { "type": "string", "pattern": "^0x[0-9a-fA-F]{40}$" },
+          "status": { "enum": ["pending", "ready", "partial", "unavailable", "stale"] },
+          "source_provenance": { "type": "array", "items": { "type": "object" } },
+          "ai_narrative": { "type": ["string", "null"] },
+          "wash_score": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+          "flow_acceleration": { "type": ["number", "null"] }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+# Credentials and machine-local configuration
+.env*
+!.env.example
+*.local.json
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+
+# Runtime state and generated output
+outputs/
+runtime/
+*.log
+*.pid
+*.lock
+
+# Build and dependency output
+**/node_modules/
+**/dist/
+**/.vercel/
+**/.wrangler/
+**/.pytest_cache/
+**/__pycache__/
+*.py[cod]
+*.tsbuildinfo
+
+# Local tooling and imported repositories
+.superpowers/
+.worktrees/
+work/external/
+work/alpha-pool-radar/terminal-upstream/
+work/alpha-pool-radar/tg-dryrun-state.json
+**/.git/

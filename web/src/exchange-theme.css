@@ -1,0 +1,361 @@
+/* Final visual layer shared by every dashboard route. */
+.alpha-terminal,
+.alpha-terminal button,
+.alpha-terminal input,
+.alpha-terminal select,
+.alpha-terminal textarea,
+.meme-monitor-v3,
+.meme-monitor-v3 button,
+.meme-monitor-v3 input,
+.meme-monitor-v3 select,
+.meme-monitor-v3 textarea {
+  font-family: var(--ot-font-ui);
+  letter-spacing: 0;
+}
+
+.alpha-terminal *,
+.meme-monitor-v3 * {
+  text-shadow: none !important;
+}
+
+.alpha-terminal {
+  background: var(--ot-color-canvas);
+}
+
+.alpha-terminal :where(
+  .hero-console,
+  .stat-card,
+  .detail-panel,
+  .chart-panel,
+  .screener-tape,
+  .gold-tier-card,
+  .gold-tier-token-card,
+  .gold-tier-workspace,
+  .rating-v2-panel,
+  .system-model-panel,
+  .source-status-panel,
+  .voice-status-strip,
+  .live-alert-strip,
+  .wallet-connect-strip,
+  .replay-board,
+  .gold-backtest-strip
+) {
+  border-color: var(--ot-color-border-default);
+  background: var(--ot-color-canvas-elevated);
+  box-shadow: none;
+}
+
+.alpha-terminal :where(.source-status-panel, .system-model-panel, .voice-status-strip, .live-alert-strip, .wallet-connect-strip) {
+  background: #101010;
+}
+
+.alpha-terminal :where(
+  .source-status-strip span,
+  .voice-status-strip span,
+  .live-alert-strip span,
+  .live-alert-strip button,
+  .wallet-connect-strip > span,
+  .wallet-connect-strip > button,
+  .system-model-statuses > span,
+  .status-pill,
+  .signal,
+  .action-badge,
+  .heat-priority-flag,
+  .gold-tier-pagination button,
+  .gold-tier-open-detail
+) {
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.alpha-terminal :where(.source-status-strip span, .voice-status-strip span, .live-alert-strip span, .live-alert-strip button, .wallet-connect-strip > span, .wallet-connect-strip > button) {
+  background: var(--ot-color-surface-1);
+}
+
+.alpha-terminal :where(.stat-card span, .detail-panel span, .chart-panel span, .recommend-head span, .rail-card span) {
+  color: var(--ot-color-text-muted);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.alpha-terminal .hero-console h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.alpha-terminal .hero-console p {
+  color: var(--ot-color-text-muted);
+  font-size: 13px;
+}
+
+.alpha-terminal .stat-card { min-height: 76px; }
+.alpha-terminal .stat-card strong { font-size: 20px; font-weight: 600; }
+
+.alpha-terminal :where(.screener-head, .recommend-head, .meme-recommend-head) {
+  min-height: 40px;
+  background: var(--ot-color-surface-1);
+  color: var(--ot-color-text-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.alpha-terminal :where(.screener-row, .recommend-row, .meme-recommend-row) {
+  border-bottom-color: var(--ot-color-border-subtle);
+  color: var(--ot-color-text-secondary);
+  font-weight: 500;
+}
+
+.alpha-terminal :where(.screener-row, .recommend-row, .meme-recommend-row):nth-of-type(even) {
+  background: rgba(255, 255, 255, 0.012);
+}
+
+.alpha-terminal :where(.screener-row, .recommend-row, .meme-recommend-row):hover,
+.alpha-terminal :where(.screener-row, .recommend-row, .meme-recommend-row).active {
+  background: var(--ot-color-surface-1);
+  box-shadow: inset 2px 0 0 var(--ot-color-accent-primary);
+}
+
+.alpha-terminal :where(.ticker-symbol, .token-copy strong) {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.alpha-terminal .token-avatar {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+}
+
+.alpha-terminal :where(.ticker-name, .muted-text, .decision-cell small, .token-copy small) {
+  color: var(--ot-color-text-muted);
+}
+
+.alpha-terminal .live-value b,
+.alpha-terminal .gold-tier-metric b { font-weight: 600; }
+
+.alpha-terminal .gold-tier-tabs {
+  background: var(--ot-color-border-subtle);
+  box-shadow: none;
+}
+
+.alpha-terminal .gold-tier-tabs button {
+  background: #101010;
+  color: var(--ot-color-text-muted);
+}
+
+.alpha-terminal .gold-tier-tabs button:hover,
+.alpha-terminal .gold-tier-tabs button.active { background: var(--ot-color-surface-1); }
+
+.alpha-terminal .gold-tier-card.discovered,
+.alpha-terminal .gold-tier-card.early,
+.alpha-terminal .gold-tier-card.confirmed,
+.alpha-terminal .gold-tier-card.revival,
+.alpha-terminal .gold-tier-card.review { background: var(--ot-color-canvas-elevated); }
+
+.alpha-terminal .gold-tier-card.confirmed {
+  border-color: rgba(248, 185, 81, 0.44);
+  box-shadow: inset 2px 0 0 var(--ot-color-accent-primary);
+}
+
+.alpha-terminal .gold-tier-card.early { border-color: rgba(70, 184, 125, 0.4); }
+
+.alpha-terminal .gold-tier-token-card,
+.alpha-terminal .gold-tier-ops span,
+.alpha-terminal .gold-tier-detail-metrics,
+.alpha-terminal .gold-tier-detail-metrics > span {
+  background: #101010;
+  border-color: var(--ot-color-border-subtle);
+}
+
+.alpha-terminal .gold-tier-list-item:hover { background: rgba(255, 255, 255, 0.035); }
+.alpha-terminal .gold-tier-list-item.active {
+  border-left-color: var(--ot-color-market-up);
+  background: rgba(70, 184, 125, 0.08);
+}
+
+.alpha-terminal :where(.gold-tier-thesis, .gold-tier-story, .gold-tier-decision-grid > section, .narrative-section) {
+  border-left-color: rgba(100, 126, 255, 0.48);
+}
+
+.alpha-terminal :where(.action-badge.lead, .signal.good) {
+  border-color: rgba(70, 184, 125, 0.44);
+  background: rgba(70, 184, 125, 0.1);
+  color: #69cf8d;
+}
+
+.alpha-terminal :where(.action-badge.ambush, .gold-tier-open-detail) {
+  border-color: rgba(100, 126, 255, 0.42);
+  background: rgba(100, 126, 255, 0.08);
+  color: #8d9fff;
+}
+
+.alpha-terminal :where(.action-badge.pullback, .signal.warn) {
+  border-color: rgba(248, 185, 81, 0.4);
+  background: rgba(248, 185, 81, 0.08);
+  color: var(--ot-color-warning);
+}
+
+.alpha-terminal :where(.action-badge.danger, .signal.danger) {
+  border-color: rgba(222, 87, 89, 0.44);
+  background: rgba(222, 87, 89, 0.09);
+  color: var(--ot-color-danger);
+}
+
+.alpha-terminal .rating-v2-panel {
+  border-left: 2px solid var(--ot-color-accent-secondary);
+}
+
+.alpha-terminal .rating-v2-track { background: var(--ot-color-surface-2); }
+.alpha-terminal .live-alert-toast {
+  border-color: var(--ot-color-border-default);
+  background: rgba(23, 23, 23, 0.98);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.32);
+}
+
+.meme-monitor-v3 { background: var(--ot-color-canvas-elevated); }
+.meme-monitor-v3 :where(.monitor-v3-header, .monitor-v3-controls) {
+  background: var(--ot-color-canvas-elevated);
+}
+
+.meme-monitor-v3 :where(
+  .monitor-v3-panel,
+  .monitor-v3-table-wrap,
+  .monitor-v3-drawer,
+  .monitor-v3-detail-card,
+  .monitor-v3-summary-card,
+  .monitor-v3-alert-panel
+) {
+  border-color: var(--monitor-border);
+  background: var(--monitor-bg);
+  box-shadow: none;
+}
+
+.meme-monitor-v3 .monitor-v3-table-scroll { scrollbar-color: #525252 #171717; }
+.meme-monitor-v3 .monitor-v3-table thead,
+.meme-monitor-v3 .monitor-v3-table th {
+  background: #1f1f1f;
+  color: #808080;
+  font-weight: 500;
+}
+
+.meme-monitor-v3 .monitor-v3-table tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.012); }
+.meme-monitor-v3 .monitor-v3-table tbody tr:hover td,
+.meme-monitor-v3 .monitor-v3-table tbody tr:focus td { background: #1b1b1b; }
+.meme-monitor-v3 .monitor-v3-token-avatar { box-shadow: none; }
+
+.meme-monitor-v3 :where(.monitor-v3-primary-value strong, .monitor-v3-token-copy strong) {
+  color: var(--monitor-text);
+  font-weight: 600;
+}
+
+.meme-monitor-v3 :where(.monitor-v3-badge, .monitor-v3-ai-state, .monitor-v3-source-chip) {
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.meme-monitor-v3 .monitor-v3-badge.is-state-resonating {
+  border-color: rgba(100, 126, 255, 0.42);
+  background: rgba(100, 126, 255, 0.08);
+}
+
+.meme-monitor-v3 .monitor-v3-badge.is-state-revival {
+  border-color: rgba(70, 184, 125, 0.42);
+  background: rgba(70, 184, 125, 0.08);
+}
+
+.meme-monitor-v3 :where(code, .monitor-v3-wallet-summary code, .monitor-v3-wallet-groups code, .monitor-v3-risk-table code) {
+  color: #9daaff;
+}
+
+.alpha-terminal :where(button, input, select, textarea):focus-visible,
+.meme-monitor-v3 :where(button, input, select, textarea):focus-visible {
+  outline: 1px solid var(--ot-color-accent-secondary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 820px) {
+  .alpha-terminal .hero-console h1 { font-size: 20px; }
+  .meme-monitor-v3 .monitor-v3-table td::before { color: var(--ot-color-text-muted); }
+}
+
+.meme-monitor-v3 :where(.monitor-v3-table, .monitor-v3-table tbody, .monitor-v3-table tbody tr) {
+  background: var(--ot-color-canvas-elevated);
+}
+
+.meme-monitor-v3 :where(
+  .monitor-v3-drawer-header,
+  .monitor-v3-detail-summary dl > div,
+  .monitor-v3-intelligence,
+  .monitor-v3-intelligence-judgement,
+  .monitor-v3-intelligence-grid > section,
+  .monitor-v3-intelligence-signals div,
+  .monitor-v3-intelligence > footer a,
+  .monitor-v3-chart,
+  .monitor-v3-holder-checks > div,
+  .monitor-v3-risk-view,
+  .monitor-v3-risk-table,
+  .monitor-v3-replay-view
+) {
+  background: #101010;
+}
+
+.meme-monitor-v3 .monitor-v3-drawer-header,
+.meme-monitor-v3 .monitor-v3-detail-section,
+.meme-monitor-v3 .monitor-v3-detail-summary,
+.meme-monitor-v3 .monitor-v3-intelligence {
+  border-color: var(--ot-color-border-subtle);
+}
+
+.meme-monitor-v3 .monitor-v3-intelligence-grid > section,
+.meme-monitor-v3 .monitor-v3-intelligence-judgement,
+.meme-monitor-v3 .monitor-v3-intelligence > footer a {
+  border-color: var(--ot-color-border-default);
+}
+
+.meme-monitor-v3 .monitor-v3-drawer-avatar {
+  border-color: var(--ot-color-border-strong);
+  background: var(--ot-color-surface-2);
+  color: var(--ot-color-text-secondary) !important;
+}
+
+.meme-monitor-v3 .monitor-v3-drawer-actions button {
+  background: var(--ot-color-surface-1);
+}
+
+.meme-monitor-v3 .monitor-v3-drawer-body {
+  scrollbar-color: #525252 #171717;
+}
+
+.meme-monitor-v3 .monitor-v3-evidence-lanes header span {
+  background: rgba(100, 126, 255, 0.08);
+}
+
+.meme-monitor-v3 .monitor-v3-evidence-lanes li,
+.meme-monitor-v3 .monitor-v3-intelligence-grid > section {
+  border-left-color: rgba(100, 126, 255, 0.5);
+}
+
+.meme-monitor-v3 .monitor-v3-detail-summary dl > div,
+.meme-monitor-v3 .monitor-v3-intelligence-grid > section,
+.meme-monitor-v3 .monitor-v3-intelligence-signals div,
+.meme-monitor-v3 .monitor-v3-intelligence > footer a,
+.meme-monitor-v3 .monitor-v3-holder-checks > div {
+  background: #101010;
+}
+
+.alpha-terminal :where(.gold-backtest-metrics span, .gold-backtest-table span, .action-win-panel, .action-win-card, .replay-lane, .evidence-block) {
+  border-color: var(--ot-color-border-subtle);
+  background: var(--ot-color-canvas-elevated);
+}
+
+.alpha-terminal .replay-item:hover { background: var(--ot-color-surface-1); }
+
+@media (max-width: 820px) {
+  .alpha-terminal .replay-lanes,
+  .alpha-terminal .action-win-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .alpha-terminal .replay-item {
+    grid-template-columns: minmax(0, 1fr) 72px 72px;
+  }
+}

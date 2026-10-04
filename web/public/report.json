@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "report_generated_at": "2026-08-14T10:00:00+08:00",
+    "holder_coverage": {
+      "unique_tokens": 1,
+      "with_top10": 1,
+      "coverage_pct": 100.0
+    }
+  },
+  "dealer_rows": [
+    {
+      "symbol": "QUID",
+      "dealer_score": 76,
+      "chain": "base",
+      "top10_holder_pct": 51.2
+    }
+  ],
+  "meme_rows": [
+    {
+      "symbol": "nana",
+      "score": 100,
+      "heat_score": 38
+    }
+  ],
+  "alpha_rows": [
+    {
+      "symbol": "DOS",
+      "score": 71
+    }
+  ]
+}
